@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c3dd616-9e29-47aa-8a75-8726646c20a5" name="Changes" comment="">
+    <list default="true" id="8879abf2-2ad8-4fed-a7cd-0403c4f6e99f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api-Gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api-Gateway/src/main/java/com/api_gateway/api_gateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/src/main/java/com/api_gateway/api_gateway/ApiGatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api-Gateway/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api-Gateway/src/test/java/com/api_gateway/api_gateway/ApiGatewayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/src/test/java/com/api_gateway/api_gateway/ApiGatewayApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,13 +40,14 @@
   "customColor": "",
   "associatedIndex": 5
 }]]></component>
-  <component name="ProjectId" id="3BdeAcV7NMk03yTiIuQfuH2D6yb" />
+  <component name="ProjectId" id="3BdgmeUSEUbcgt9lXjczfOMuifz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Maven.Api-Gateway [clean].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -52,10 +55,10 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ApiGatewayApplication (1).executor": "Run",
     "Spring Boot.ApiGatewayApplication.executor": "Run",
     "Spring Boot.MsCoincidenciasApplication.executor": "Run",
     "Spring Boot.MsMascotaApplication.executor": "Run",
-    "Spring Boot.MsUsuarioApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -81,10 +84,7 @@
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
-              <entry key="ApiGatewayApplication" value="STOPPED" />
-              <entry key="MsCoincidenciasApplication" value="STOPPED" />
               <entry key="MsMascotaApplication" value="STOPPED" />
-              <entry key="MsUsuarioApplication" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -92,16 +92,28 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.MsUsuarioApplication">
-    <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="api-gateway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.api_gateway.api_gateway.ApiGatewayApplication" />
+    <configuration name="ApiGatewayApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="Api-Gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.api_gateway.Api_Gateway.ApiGatewayApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.api_gateway.Api_Gateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MsCoincidenciasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="MsCoincidenciasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="ms-coincidencias" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.dcknotfnd.ms_coincidencias.MsCoincidenciasApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dcknotfnd.ms_coincidencias.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,10 +145,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ApiGatewayApplication (1)" />
+      <item itemvalue="Spring Boot.MsCoincidenciasApplication" />
+      <item itemvalue="Spring Boot.MsMascotaApplication" />
+      <item itemvalue="Spring Boot.MsUsuarioApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.MsUsuarioApplication" />
+        <item itemvalue="Spring Boot.MsCoincidenciasApplication" />
         <item itemvalue="Spring Boot.MsMascotaApplication" />
+        <item itemvalue="Spring Boot.ApiGatewayApplication (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -150,12 +170,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0c3dd616-9e29-47aa-8a75-8726646c20a5" name="Changes" comment="" />
-      <created>1774823234626</created>
+      <changelist id="8879abf2-2ad8-4fed-a7cd-0403c4f6e99f" name="Changes" comment="" />
+      <created>1774824523522</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1774823234626</updated>
-      <workItem from="1774823236184" duration="456000" />
+      <updated>1774824523522</updated>
+      <workItem from="1774824525229" duration="618000" />
     </task>
     <servers />
   </component>
