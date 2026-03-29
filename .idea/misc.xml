@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/Ms-mascota/pom.xml" />
         <option value="$PROJECT_DIR$/Ms-usuario/pom.xml" />
+        <option value="$PROJECT_DIR$/Api-Gateway/pom.xml" />
         <option value="$PROJECT_DIR$/Ms-coincidencias/pom.xml" />
       </list>
     </option>
