@@ -7,10 +7,16 @@
     <list default="true" id="8879abf2-2ad8-4fed-a7cd-0403c4f6e99f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api-Gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api-Gateway/src/main/java/com/api_gateway/api_gateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/src/main/java/com/api_gateway/api_gateway/ApiGatewayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api-Gateway/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api-Gateway/src/test/java/com/api_gateway/api_gateway/ApiGatewayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/src/test/java/com/api_gateway/api_gateway/ApiGatewayApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/MsCoincidenciasApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/MsCoincidenciasApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-mascota/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/MsMascotaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/MsMascotaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-usuario/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/MsUsuarioApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/MsUsuarioApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,26 +26,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Krist0-afk"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Krist0-afk&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/Tavotsu/Dnf-backend.git",
-    "accountId": "f9bf6a34-3c36-4686-85af-1b49dd553aad"
+    "accountId": "2ab53503-cdf5-408d-b396-e1191023a0ea"
   }
 }]]></component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="3BdgmeUSEUbcgt9lXjczfOMuifz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -59,14 +65,18 @@
     "Spring Boot.ApiGatewayApplication.executor": "Run",
     "Spring Boot.MsCoincidenciasApplication.executor": "Run",
     "Spring Boot.MsMascotaApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "feature/api-gateway",
+    "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/gusta/Desktop/Documentos/Coding/Java/fstck 3/Dnf-backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.configurations.included.in.services": "true",
+    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -163,8 +173,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
-        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
       </set>
     </attachedChunks>
   </component>
@@ -176,6 +186,7 @@
       <option name="presentableId" value="Default" />
       <updated>1774824523522</updated>
       <workItem from="1774824525229" duration="618000" />
+      <workItem from="1774907555961" duration="656000" />
     </task>
     <servers />
   </component>
