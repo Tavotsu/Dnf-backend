@@ -6,11 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-
-@FeignClient(name = "ms-mascota", url = "http://localhost:8080")
+// Quitamos la 'url' estática, Eureka se encargará de buscar 'ms-mascota'
+@FeignClient(name = "ms-mascota")
 public interface MascotaClient {
-
-
     @GetMapping("/api/mascotas")
     List<MascotaDTO> obtenerTodasLasMascotas();
 }

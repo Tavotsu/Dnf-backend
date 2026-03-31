@@ -14,24 +14,18 @@ spring:
               uri: lb://ms-mascota
               predicates:
                 - Path=/api/mascotas/**
-              filters:
-                - StripPrefix=2
 
             - id: ruta-usuarios
               uri: lb://ms-usuario
               predicates:
                 - Path=/api/usuarios/**
-              filters:
-                - StripPrefix=2
-            
+
             - id: ruta-coincidencias
               uri: lb://ms-coincidencias
               predicates:
                 - Path=/api/coincidencias/**
-              filters:
-                - StripPrefix=2
 
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/

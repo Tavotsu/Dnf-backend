@@ -4,19 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8879abf2-2ad8-4fed-a7cd-0403c4f6e99f" name="Changes" comment="">
+    <list default="true" id="98292412-2235-447c-b377-51a1dc398e11" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ms-mascota/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ms-usuario/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose-db.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/betterCommentsSettings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api-Gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api-Gateway/src/main/java/com/api_gateway/api_gateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/src/main/java/com/api_gateway/api_gateway/ApiGatewayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api-Gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ms-coincidencias/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/MsCoincidenciasApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/MsCoincidenciasApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-mascota/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/MsMascotaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/MsMascotaApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-usuario/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/MsUsuarioApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/MsUsuarioApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/client/MascotaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/client/MascotaClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/src/main/java/com/dnfbackend/eurekaserver/EurekaserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver/src/main/java/com/dnfbackend/eurekaserver/EurekaserverApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,59 +27,75 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/api-gateway" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Krist0-afk&quot;
+    &quot;assignee&quot;: &quot;BayronAlexisBaezVargas&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Tavotsu/Dnf-backend.git",
-    "accountId": "2ab53503-cdf5-408d-b396-e1191023a0ea"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Tavotsu/Dnf-backend.git&quot;,
+    &quot;accountId&quot;: &quot;24f2a6b4-8eed-4beb-986f-63909b7b57b2&quot;
   }
-}]]></component>
-  <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
 }</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="3BdgmeUSEUbcgt9lXjczfOMuifz" />
+  <component name="ProjectId" id="3BiHi9WGl8FjpOKYdadK6I6MKfy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Maven.Api-Gateway [clean].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ApiGatewayApplication (1).executor": "Run",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.ApiGatewayApplication.executor": "Run",
+    "Spring Boot.EurekaserverApplication.executor": "Run",
     "Spring Boot.MsCoincidenciasApplication.executor": "Run",
     "Spring Boot.MsMascotaApplication.executor": "Run",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "feature/api-gateway",
-    "junie.onboarding.icon.badge.shown": "true",
+    "Spring Boot.MsUsuarioApplication.executor": "Run",
+    "git-widget-placeholder": "featue/dev/Byron",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/gusta/Desktop/Documentos/Coding/Java/fstck 3/Dnf-backend",
+    "last_opened_file_path": "/home/bayron-baez/Escritorio/Clase Fs3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.configurations.included.in.services": "true",
-    "to.speed.mode.migration.done": "true",
+    "settings.editor.selected.configurable": "configurable.group.tools",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -89,25 +108,39 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="hiddenConfigurations">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <set>
+              <option value="EurekaserverApplication" />
+              <option value="MsCoincidenciasApplication" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="configurationStatuses">
       <map>
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
+              <entry key="ApiGatewayApplication" value="STOPPED" />
               <entry key="MsMascotaApplication" value="STOPPED" />
+              <entry key="MsUsuarioApplication" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.MsUsuarioApplication">
-    <configuration name="ApiGatewayApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.ApiGatewayApplication">
+    <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="Api-Gateway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.api_gateway.Api_Gateway.ApiGatewayApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.api_gateway.api_gateway.ApiGatewayApplication" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.api_gateway.Api_Gateway.*" />
+          <option name="PATTERN" value="com.api_gateway.api_gateway.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,15 +148,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MsCoincidenciasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="EurekaserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="eurekaserver" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dnfbackend.eurekaserver.EurekaserverApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MsCoincidenciasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ms-coincidencias" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.dcknotfnd.ms_coincidencias.MsCoincidenciasApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.dcknotfnd.ms_coincidencias.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -155,38 +189,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Spring Boot.ApiGatewayApplication (1)" />
-      <item itemvalue="Spring Boot.MsCoincidenciasApplication" />
-      <item itemvalue="Spring Boot.MsMascotaApplication" />
-      <item itemvalue="Spring Boot.MsUsuarioApplication" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.MsUsuarioApplication" />
-        <item itemvalue="Spring Boot.MsCoincidenciasApplication" />
         <item itemvalue="Spring Boot.MsMascotaApplication" />
-        <item itemvalue="Spring Boot.ApiGatewayApplication (1)" />
+        <item itemvalue="Spring Boot.MsUsuarioApplication" />
+        <item itemvalue="Spring Boot.ApiGatewayApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.32098.37" />
       </set>
     </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8879abf2-2ad8-4fed-a7cd-0403c4f6e99f" name="Changes" comment="" />
-      <created>1774824523522</created>
+      <changelist id="98292412-2235-447c-b377-51a1dc398e11" name="Changes" comment="" />
+      <created>1774965095444</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1774824523522</updated>
-      <workItem from="1774824525229" duration="618000" />
-      <workItem from="1774907555961" duration="656000" />
+      <updated>1774965095444</updated>
+      <workItem from="1774965097107" duration="485000" />
+      <workItem from="1774987029023" duration="2016000" />
     </task>
     <servers />
   </component>
