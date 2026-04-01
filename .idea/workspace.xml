@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98292412-2235-447c-b377-51a1dc398e11" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ms-mascota/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ms-usuario/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose-db.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/betterCommentsSettings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api-Gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api-Gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/client/MascotaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/client/MascotaClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eurekaserver/src/main/java/com/dnfbackend/eurekaserver/EurekaserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver/src/main/java/com/dnfbackend/eurekaserver/EurekaserverApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/api-gateway" />
+        <entry key="$PROJECT_DIR$" value="feature/dev-test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -86,7 +72,7 @@
     "Spring Boot.MsCoincidenciasApplication.executor": "Run",
     "Spring Boot.MsMascotaApplication.executor": "Run",
     "Spring Boot.MsUsuarioApplication.executor": "Run",
-    "git-widget-placeholder": "featue/dev/Byron",
+    "git-widget-placeholder": "dev-kristo",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/bayron-baez/Escritorio/Clase Fs3",
     "node.js.detected.package.eslint": "true",
@@ -191,9 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.MsUsuarioApplication" />
+        <item itemvalue="Spring Boot.MsMascotaApplication" />
+        <item itemvalue="Spring Boot.ApiGatewayApplication" />
         <item itemvalue="Spring Boot.MsMascotaApplication" />
         <item itemvalue="Spring Boot.MsUsuarioApplication" />
-        <item itemvalue="Spring Boot.ApiGatewayApplication" />
       </list>
     </recent_temporary>
   </component>
