@@ -4,8 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98292412-2235-447c-b377-51a1dc398e11" name="Changes" comment="">
+    <list default="true" id="73792c42-222a-4619-b221-aae85d616a6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Ms-coincidencias/src/test/java/com/dcknotfnd/ms_coincidencias/CoincidenciaControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ms-mascota/src/test/java/com/dcknotfnd/Ms_mascota/MascotaControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ms-usuario/src/test/java/com/usuario/Ms_usuario/UsuarioControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_04_2026_12_45_p__m___Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_04_2026_12_45_p_ m__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_04_2026_12_45_p_ m__[Changes]1/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/controller/CoincidenciaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/controller/CoincidenciaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/model/Coincidencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/model/Coincidencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-mascota/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/controller/MascotaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/controller/MascotaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/model/Mascota.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/model/Mascota.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-usuario/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-usuario/src/test/java/com/usuario/Ms_usuario/MsUsuarioApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,60 +31,49 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="feature/dev-test" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;BayronAlexisBaezVargas&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Krist0-afk"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Tavotsu/Dnf-backend.git&quot;,
-    &quot;accountId&quot;: &quot;24f2a6b4-8eed-4beb-986f-63909b7b57b2&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Tavotsu/Dnf-backend.git",
+    "accountId": "f9bf6a34-3c36-4686-85af-1b49dd553aad"
   }
-}</component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
+}]]></component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
+  <component name="MavenRunner">
+    <option name="jreName" value="temurin-21" />
   </component>
-  <component name="McpProjectServerCommands">
-    <commands />
-    <urls />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="3BiHi9WGl8FjpOKYdadK6I6MKfy" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="3BrJudBJJN2K9Io3PSBWU4klIvX" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.CoincidenciaControllerTest.testCrearCoincidencia.executor": "Run",
+    "JUnit.CoincidenciaControllerTest.testListarCoincidencias.executor": "Run",
+    "Maven.ms-coincidencias [clean].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.ApiGatewayApplication.executor": "Run",
     "Spring Boot.EurekaserverApplication.executor": "Run",
     "Spring Boot.MsCoincidenciasApplication.executor": "Run",
@@ -74,14 +81,16 @@
     "Spring Boot.MsUsuarioApplication.executor": "Run",
     "git-widget-placeholder": "dev-kristo",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/bayron-baez/Escritorio/Clase Fs3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "configurable.group.tools",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -94,25 +103,13 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
-    <option name="hiddenConfigurations">
-      <map>
-        <entry key="SpringBootApplicationConfigurationType">
-          <value>
-            <set>
-              <option value="EurekaserverApplication" />
-              <option value="MsCoincidenciasApplication" />
-            </set>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="configurationStatuses">
       <map>
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
-              <entry key="ApiGatewayApplication" value="STOPPED" />
-              <entry key="MsMascotaApplication" value="STOPPED" />
+              <entry key="EurekaserverApplication" value="STOPPED" />
+              <entry key="MsCoincidenciasApplication" value="STOPPED" />
               <entry key="MsUsuarioApplication" value="STOPPED" />
             </map>
           </value>
@@ -120,16 +117,42 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ApiGatewayApplication">
-    <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="Api-Gateway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.api_gateway.api_gateway.ApiGatewayApplication" />
+  <component name="RunManager" selected="Spring Boot.EurekaserverApplication">
+    <configuration name="CoincidenciaControllerTest.testCrearCoincidencia" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-coincidencias" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.api_gateway.api_gateway.*" />
+          <option name="PATTERN" value="com.dcknotfnd.ms_coincidencias.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.dcknotfnd.ms_coincidencias" />
+      <option name="MAIN_CLASS_NAME" value="com.dcknotfnd.ms_coincidencias.CoincidenciaControllerTest" />
+      <option name="METHOD_NAME" value="testCrearCoincidencia" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CoincidenciaControllerTest.testListarCoincidencias" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-coincidencias" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dcknotfnd.ms_coincidencias.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dcknotfnd.ms_coincidencias" />
+      <option name="MAIN_CLASS_NAME" value="com.dcknotfnd.ms_coincidencias.CoincidenciaControllerTest" />
+      <option name="METHOD_NAME" value="testListarCoincidencias" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Api-Gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.api_gateway.api_gateway.ApiGatewayApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -148,60 +171,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MsMascotaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="Ms-mascota" />
+    <configuration name="MsMascotaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="reportes" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.dcknotfnd.Ms_mascota.MsMascotaApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.dcknotfnd.Ms_mascota.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MsUsuarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="MsUsuarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Ms-usuario" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.usuario.Ms_usuario.MsUsuarioApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.usuario.Ms_usuario.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.MsUsuarioApplication" />
-        <item itemvalue="Spring Boot.MsMascotaApplication" />
-        <item itemvalue="Spring Boot.ApiGatewayApplication" />
-        <item itemvalue="Spring Boot.MsMascotaApplication" />
-        <item itemvalue="Spring Boot.MsUsuarioApplication" />
+        <item itemvalue="JUnit.CoincidenciaControllerTest.testListarCoincidencias" />
+        <item itemvalue="JUnit.CoincidenciaControllerTest.testCrearCoincidencia" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.32098.37" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
       </set>
     </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="98292412-2235-447c-b377-51a1dc398e11" name="Changes" comment="" />
-      <created>1774965095444</created>
+      <changelist id="73792c42-222a-4619-b221-aae85d616a6c" name="Changes" comment="" />
+      <created>1775241481543</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1774965095444</updated>
-      <workItem from="1774965097107" duration="485000" />
-      <workItem from="1774987029023" duration="2016000" />
+      <updated>1775241481543</updated>
+      <workItem from="1775241483088" duration="2337000" />
     </task>
     <servers />
   </component>
