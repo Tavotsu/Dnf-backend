@@ -1,17 +1,61 @@
 package com.dcknotfnd.ms_coincidencias.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table(name = "coincidencias")
-@Data
 public class Coincidencia {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String especieBuscada;
     private String colorBuscado;
-    private String estado; // Ej: "PENDIENTE", "CONFIRMADO", "RECHAZADO"
+    private String estado;
+
+
+    public Coincidencia() {
+    }
+
+
+    public Coincidencia(Long id, String especieBuscada, String colorBuscado, String estado) {
+        this.id = id;
+        this.especieBuscada = especieBuscada;
+        this.colorBuscado = colorBuscado;
+        this.estado = estado;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEspecieBuscada() {
+        return especieBuscada;
+    }
+
+    public void setEspecieBuscada(String especieBuscada) {
+        this.especieBuscada = especieBuscada;
+    }
+
+    public String getColorBuscado() {
+        return colorBuscado;
+    }
+
+    public void setColorBuscado(String colorBuscado) {
+        this.colorBuscado = colorBuscado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }

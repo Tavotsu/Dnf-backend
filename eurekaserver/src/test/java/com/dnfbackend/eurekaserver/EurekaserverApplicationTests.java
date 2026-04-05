@@ -1,10 +1,10 @@
-package com.usuario.Ms_usuario;
+package com.dnfbackend.eurekaserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsUsuarioApplicationTests {
+class EurekaserverApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+  eureka-server:
+    build: ./eureka-server
+    ports:
+      - "8761:8761"
+
+  ms-mascota:
+    build: ./Ms-mascota
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-server
+
+  ms-usuario:
+    build: ./Ms-usuario
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+
+  ms-coincidencias:
+    build: ./Ms-coincidencias
+    ports:
+      - "8083:8083"
+    depends_on:
+      - eureka-server
+
+  api-gateway:
+    build: ./Api-Gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka-server
