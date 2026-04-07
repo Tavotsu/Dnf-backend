@@ -5,25 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73792c42-222a-4619-b221-aae85d616a6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Ms-coincidencias/src/test/java/com/dcknotfnd/ms_coincidencias/CoincidenciaControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ms-mascota/src/test/java/com/dcknotfnd/Ms_mascota/MascotaControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ms-usuario/src/test/java/com/usuario/Ms_usuario/UsuarioControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_04_2026_12_45_p__m___Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_04_2026_12_45_p_ m__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_04_2026_12_45_p_ m__[Changes]1/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/controller/CoincidenciaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/controller/CoincidenciaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/model/Coincidencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/java/com/dcknotfnd/ms_coincidencias/model/Coincidencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api-Gateway/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api-Gateway/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api-Gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-coincidencias/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-coincidencias/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-mascota/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ms-mascota/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/controller/MascotaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/controller/MascotaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/model/Mascota.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/src/main/java/com/dcknotfnd/Ms_mascota/model/Mascota.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-mascota/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-mascota/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-usuario/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-usuario/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/mvnw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ms-usuario/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/controller/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/src/main/java/com/usuario/Ms_usuario/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ms-usuario/src/test/java/com/usuario/Ms_usuario/MsUsuarioApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ms-usuario/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Ms-usuario/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver/mvnw" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,30 +33,37 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Krist0-afk"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Krist0-afk&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Tavotsu/Dnf-backend.git",
-    "accountId": "f9bf6a34-3c36-4686-85af-1b49dd553aad"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Tavotsu/Dnf-backend.git&quot;,
+    &quot;accountId&quot;: &quot;f9bf6a34-3c36-4686-85af-1b49dd553aad&quot;
   }
-}]]></component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MavenRunner">
     <option name="jreName" value="temurin-21" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="3BrJudBJJN2K9Io3PSBWU4klIvX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -79,7 +86,7 @@
     "Spring Boot.MsCoincidenciasApplication.executor": "Run",
     "Spring Boot.MsMascotaApplication.executor": "Run",
     "Spring Boot.MsUsuarioApplication.executor": "Run",
-    "git-widget-placeholder": "dev-kristo",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -108,8 +115,10 @@
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
+              <entry key="ApiGatewayApplication" value="STOPPED" />
               <entry key="EurekaserverApplication" value="STOPPED" />
               <entry key="MsCoincidenciasApplication" value="STOPPED" />
+              <entry key="MsMascotaApplication" value="STOPPED" />
               <entry key="MsUsuarioApplication" value="STOPPED" />
             </map>
           </value>
@@ -117,7 +126,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.EurekaserverApplication">
+  <component name="RunManager" selected="Spring Boot.MsUsuarioApplication">
     <configuration name="CoincidenciaControllerTest.testCrearCoincidencia" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ms-coincidencias" />
       <extension name="coverage">
@@ -172,7 +181,7 @@
       </method>
     </configuration>
     <configuration name="MsMascotaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="reportes" />
+      <module name="Ms-mascota" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.dcknotfnd.Ms_mascota.MsMascotaApplication" />
       <method v="2">
         <option name="Make" enabled="true" />

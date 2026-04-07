@@ -1,9 +1,20 @@
 version: '3.8'
 
 services:
+  # Base de datos integrada en el mismo compose
+  postgres-db:
+    image: postgres:15
+    container_name: postgres-dnf
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: dnf_db
+    ports:
+      - "5432:5432"
+    restart: always
 
   eureka-server:
-    build: ./eureka-server
+    build: ./eurekaserver # Nombre de carpeta corregido (sin guion)
     ports:
       - "8761:8761"
 
@@ -13,6 +24,7 @@ services:
       - "8081:8081"
     depends_on:
       - eureka-server
+      - postgres-db # Espera a que la BD inicie
 
   ms-usuario:
     build: ./Ms-usuario
@@ -20,6 +32,7 @@ services:
       - "8082:8082"
     depends_on:
       - eureka-server
+      - postgres-db
 
   ms-coincidencias:
     build: ./Ms-coincidencias
@@ -27,6 +40,7 @@ services:
       - "8083:8083"
     depends_on:
       - eureka-server
+      - postgres-db
 
   api-gateway:
     build: ./Api-Gateway
