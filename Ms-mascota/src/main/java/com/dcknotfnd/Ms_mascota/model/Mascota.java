@@ -1,6 +1,8 @@
 package com.dcknotfnd.Ms_mascota.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "mascotas")
@@ -10,9 +12,11 @@ public class Mascota {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "El nombre de la mascota es obligatorio")
     @Column(nullable = false)
     private String nombre;
 
+    @NotBlank(message = "Debe especificar la especie (Ej: Perro, Gato)")
     @Column(nullable = false)
     private String especie;
 
@@ -25,13 +29,12 @@ public class Mascota {
 
     private String fotoUrl;
 
+    @NotNull(message = "El ID del usuario dueño es obligatorio")
     @Column(name = "usuario_id", nullable = false)
     private Long usuarioId;
 
-
     public Mascota() {
     }
-
 
     public Mascota(Long id, String nombre, String especie, String raza, String color, String tamano, String caracteristicasFisicas, String fotoUrl, Long usuarioId) {
         this.id = id;

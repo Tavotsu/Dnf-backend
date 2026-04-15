@@ -6,6 +6,7 @@ import com.dcknotfnd.ms_coincidencias.model.Coincidencia;
 import com.dcknotfnd.ms_coincidencias.repository.CoincidenciaRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +35,7 @@ public class CoincidenciaController {
 
     @Operation(summary = "Crear nueva coincidencia", description = "Registra una búsqueda en estado PENDIENTE.")
     @PostMapping
-    public Coincidencia crearCoincidencia(@RequestBody Coincidencia coincidencia) {
+    public Coincidencia crearCoincidencia(@Valid @RequestBody Coincidencia coincidencia) {
         coincidencia.setEstado("PENDIENTE");
         return coincidenciaRepository.save(coincidencia);
     }
@@ -46,7 +47,7 @@ public class CoincidenciaController {
     }
 
     @PutMapping("/{id}")
-    public Coincidencia actualizarCoincidencia(@PathVariable Long id, @RequestBody Coincidencia coincidenciaActualizada) {
+    public Coincidencia actualizarCoincidencia(@PathVariable Long id, @Valid @RequestBody Coincidencia coincidenciaActualizada) {
         return coincidenciaRepository.findById(id).map(coincidencia -> {
             coincidencia.setEstado(coincidenciaActualizada.getEstado());
             return coincidenciaRepository.save(coincidencia);
