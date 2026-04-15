@@ -41,8 +41,12 @@ Sigue estos pasos para levantar toda la infraestructura:
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <URL_DE_TU_REPOSITORIO>
+git clone https://github.com/Tavotsu/Dnf-backend.git
 cd dnf-backend
+```
+### 2. Desplegar el proyecto
 
-
-
+```bash
+docker compose build
+docker compose up
+```
