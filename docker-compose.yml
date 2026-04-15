@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Base de datos integrada en el mismo compose
   postgres-db:
