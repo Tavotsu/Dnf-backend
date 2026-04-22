@@ -1,8 +1,6 @@
 package com.dcknotfnd.Ms_mascota.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "mascotas")
@@ -12,112 +10,53 @@ public class Mascota {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El nombre de la mascota es obligatorio")
-    @Column(nullable = false)
-    private String nombre;
+    
+    private String name;
+    private String type; 
+    private String breed; 
+    private String gender; 
+    private String status; 
+    private String location; 
+    private Double latitude; 
+    private Double longitude; 
+    private String timeAgo; 
+    
+    @Column(length = 1000)
+    private String image; 
 
-    @NotBlank(message = "Debe especificar la especie (Ej: Perro, Gato)")
-    @Column(nullable = false)
-    private String especie;
-
-    private String raza;
-    private String color;
-    private String tamano;
-
-    @Column(length = 500)
-    private String caracteristicasFisicas;
-
-    private String fotoUrl;
-
-    @NotNull(message = "El ID del usuario dueño es obligatorio")
-    @Column(name = "usuario_id", nullable = false)
-    private Long usuarioId;
-
-    public Mascota() {
-    }
-
-    public Mascota(Long id, String nombre, String especie, String raza, String color, String tamano, String caracteristicasFisicas, String fotoUrl, Long usuarioId) {
-        this.id = id;
-        this.nombre = nombre;
-        this.especie = especie;
-        this.raza = raza;
-        this.color = color;
-        this.tamano = tamano;
-        this.caracteristicasFisicas = caracteristicasFisicas;
-        this.fotoUrl = fotoUrl;
-        this.usuarioId = usuarioId;
-    }
+    public Mascota() {}
 
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getBreed() { return breed; }
+    public void setBreed(String breed) { this.breed = breed; }
 
-    public String getEspecie() {
-        return especie;
-    }
+    public String getGender() { return gender; }
+    public void setGender(String gender) { this.gender = gender; }
 
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
-    public String getRaza() {
-        return raza;
-    }
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
 
-    public void setRaza(String raza) {
-        this.raza = raza;
-    }
+    public Double getLatitude() { return latitude; }
+    public void setLatitude(Double latitude) { this.latitude = latitude; }
 
-    public String getColor() {
-        return color;
-    }
+    public Double getLongitude() { return longitude; }
+    public void setLongitude(Double longitude) { this.longitude = longitude; }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
+    public String getTimeAgo() { return timeAgo; }
+    public void setTimeAgo(String timeAgo) { this.timeAgo = timeAgo; }
 
-    public String getTamano() {
-        return tamano;
-    }
-
-    public void setTamano(String tamano) {
-        this.tamano = tamano;
-    }
-
-    public String getCaracteristicasFisicas() {
-        return caracteristicasFisicas;
-    }
-
-    public void setCaracteristicasFisicas(String caracteristicasFisicas) {
-        this.caracteristicasFisicas = caracteristicasFisicas;
-    }
-
-    public String getFotoUrl() {
-        return fotoUrl;
-    }
-
-    public void setFotoUrl(String fotoUrl) {
-        this.fotoUrl = fotoUrl;
-    }
-
-    public Long getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
-    }
+    public String getImage() { return image; }
+    public void setImage(String image) { this.image = image; }
 }

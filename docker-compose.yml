@@ -1,5 +1,4 @@
 services:
-  # Base de datos integrada en el mismo compose
   postgres-db:
     image: postgres:15
     container_name: postgres-dnf
@@ -12,7 +11,7 @@ services:
     restart: always
 
   eureka-server:
-    build: ./eurekaserver # Nombre de carpeta corregido (sin guion)
+    build: ./eurekaserver
     ports:
       - "8761:8761"
 
@@ -22,7 +21,7 @@ services:
       - "8081:8081"
     depends_on:
       - eureka-server
-      - postgres-db # Espera a que la BD inicie
+      - postgres-db
 
   ms-usuario:
     build: ./Ms-usuario
@@ -44,5 +43,28 @@ services:
     build: ./Api-Gateway
     ports:
       - "8080:8080"
+    depends_on:
+      - eureka-server
+
+  
+  ms-comunidad:
+    build: ./Ms-comunidad/Ms-comunidad
+    ports:
+      - "8094:8094"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/dnf_db
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=adminpassword
+    depends_on:
+      - eureka-server
+      - postgres-db
+
+  ms-notificaciones:
+    build: ./Ms-notificaciones/Ms-notificaciones
+    ports:
+      - "8095:8095"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     depends_on:
       - eureka-server

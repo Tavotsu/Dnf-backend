@@ -1,0 +1,22 @@
+server:
+  port: 8095
+
+spring:
+  application:
+    name: ms-notificaciones
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tu_usuario@gmail.com # Reemplazar con correo real para pruebas
+    password: tu_app_password      # Reemplazar con clave de aplicación de Google
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
