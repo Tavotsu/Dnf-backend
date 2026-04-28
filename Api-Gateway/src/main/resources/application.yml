@@ -10,15 +10,19 @@ spring:
       server:
         webmvc:
           routes:
-            - id: ruta-mascotas
+            - id: ms-pets-route
               uri: lb://ms-mascota
               predicates:
-                - Path=/api/mascotas/**
+                - Path=/api/pets/**
+              filters:
+                - RewritePath=/api/pets/(?<segment>.*), /api/mascotas/$\{segment}
 
-            - id: ruta-usuarios
+            - id: ms-auth-route
               uri: lb://ms-usuario
               predicates:
-                - Path=/api/usuarios/**
+                - Path=/api/auth/**
+              filters:
+                - RewritePath=/api/auth/(?<segment>.*), /api/usuarios/$\{segment}
 
             - id: ruta-coincidencias
               uri: lb://ms-coincidencias

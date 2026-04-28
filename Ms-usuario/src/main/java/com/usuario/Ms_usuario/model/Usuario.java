@@ -10,8 +10,9 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Cambiado de 'nombre' a 'name' para coincidir con el frontend
     @Column(nullable = false)
-    private String nombre;
+    private String name;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -19,23 +20,27 @@ public class Usuario {
     @Column(nullable = false)
     private String password;
 
-    //ej ciudadano, clinica, refugio , municipalidad
+    // ej: ciudadano, clinica, refugio , municipalidad
     @Column(nullable = false)
     private String rol;
 
+    // Añadido para coincidir con el frontend
+    @Column(nullable = true)
+    private String avatar;
 
     public Usuario() {
     }
 
-
-    public Usuario(Long id, String nombre, String email, String password, String rol) {
+    public Usuario(Long id, String name, String email, String password, String rol, String avatar) {
         this.id = id;
-        this.nombre = nombre;
+        this.name = name;
         this.email = email;
         this.password = password;
         this.rol = rol;
+        this.avatar = avatar;
     }
 
+    // --- Getters y Setters ---
 
     public Long getId() {
         return id;
@@ -45,12 +50,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -75,5 +80,13 @@ public class Usuario {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
