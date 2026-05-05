@@ -5,6 +5,7 @@ import com.usuario.Ms_usuario.repository.UsuarioRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,16 +20,14 @@ public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-   // post
     @Operation(summary = "Registrar un nuevo usuario", description = "Guarda un usuario en la base de datos.")
     @ApiResponse(responseCode = "200", description = "Usuario creado exitosamente")
     @PostMapping
-    public ResponseEntity<Usuario> save(@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> save(@Valid @RequestBody Usuario usuario) {
         Usuario nuevoUsuario = usuarioRepository.save(usuario);
         return ResponseEntity.ok(nuevoUsuario);
     }
 
-   // get
     @Operation(summary = "Listar todos los usuarios", description = "Obtiene una lista completa de todos los usuarios registrados.")
     @ApiResponse(responseCode = "200", description = "Lista de usuarios obtenida correctamente")
     @GetMapping

@@ -1,6 +1,7 @@
 package com.dcknotfnd.ms_coincidencias.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "coincidencias")
@@ -10,14 +11,16 @@ public class Coincidencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Debe especificar la especie que está buscando")
     private String especieBuscada;
-    private String colorBuscado;
-    private String estado;
 
+    @NotBlank(message = "Debe especificar el color que está buscando")
+    private String colorBuscado;
+
+    private String estado;
 
     public Coincidencia() {
     }
-
 
     public Coincidencia(Long id, String especieBuscada, String colorBuscado, String estado) {
         this.id = id;

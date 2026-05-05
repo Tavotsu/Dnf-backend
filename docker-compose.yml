@@ -1,5 +1,4 @@
 services:
-  # Base de datos integrada en el mismo compose
   postgres-db:
     image: postgres:15
     container_name: postgres-dnf
@@ -8,13 +7,14 @@ services:
       POSTGRES_PASSWORD: adminpassword
       POSTGRES_DB: dnf_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     restart: always
 
   eureka-server:
-    build: ./eurekaserver # Nombre de carpeta corregido (sin guion)
+    build: ./eurekaserver
     ports:
       - "8761:8761"
+    restart: always
 
   ms-mascota:
     build: ./Ms-mascota
@@ -22,7 +22,8 @@ services:
       - "8081:8081"
     depends_on:
       - eureka-server
-      - postgres-db # Espera a que la BD inicie
+      - postgres-db
+    restart: always
 
   ms-usuario:
     build: ./Ms-usuario
@@ -31,6 +32,7 @@ services:
     depends_on:
       - eureka-server
       - postgres-db
+    restart: always
 
   ms-coincidencias:
     build: ./Ms-coincidencias
@@ -39,10 +41,41 @@ services:
     depends_on:
       - eureka-server
       - postgres-db
+    restart: always
 
   api-gateway:
     build: ./Api-Gateway
     ports:
       - "8080:8080"
+    environment:
+      # Forzamos al Gateway a buscar Eureka en el contenedor correcto, no en localhost
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     depends_on:
       - eureka-server
+    restart: always
+
+  ms-comunidad:
+    build: ./Ms-comunidad/Ms-comunidad
+    ports:
+      - "8094:8094"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/dnf_db
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=adminpassword
+
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+    depends_on:
+      - eureka-server
+      - postgres-db
+    restart: always
+
+  ms-notificaciones:
+    build: ./Ms-notificaciones/Ms-notificaciones
+    ports:
+      - "8095:8095"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    restart: always

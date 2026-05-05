@@ -1,0 +1,22 @@
+server:
+  port: 8095
+
+spring:
+  application:
+    name: ms-notificaciones
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tu_usuario@gmail.com 
+    password: tu_app_password      
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
