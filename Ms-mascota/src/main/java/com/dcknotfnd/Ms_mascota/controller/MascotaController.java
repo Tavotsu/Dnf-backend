@@ -43,4 +43,5 @@ public class MascotaController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
 }

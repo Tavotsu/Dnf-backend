@@ -17,7 +17,6 @@ spring:
               - DELETE
               - OPTIONS
             allowedHeaders: "*"
-     
       routes:
         - id: ms-usuario
           uri: lb://MS-USUARIO
@@ -39,4 +38,4 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/
