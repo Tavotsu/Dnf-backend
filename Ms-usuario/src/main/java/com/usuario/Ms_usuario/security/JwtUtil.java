@@ -22,4 +22,25 @@ public class JwtUtil {
                 .signWith(key)
                 .compact();
     }
+
+    // Extraer el email (subject) del token
+    public String extractUsername(String token) {
+        return Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .getSubject();
+    }
+
+    // Validar si el token es correcto y no ha expirado
+    public boolean isTokenValid(String token) {
+        try {
+            Jwts.parser().verifyWith(key).build().parseSignedClaims(token);
+            return true;
+        } catch (Exception e) {
+            // Si la firma es inválida, expiró o está mal formado, cae aquí
+            return false;
+        }
+    }
 }
