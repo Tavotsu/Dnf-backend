@@ -6,34 +6,24 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "*" 
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - OPTIONS
-            allowedHeaders: "*"
-      routes:
-        - id: ms-usuario
-          uri: lb://MS-USUARIO
-          predicates:
-            - Path=/api/usuarios/**, /api/auth/**
-        - id: ms-mascota
-          uri: lb://MS-MASCOTA
-          predicates:
-            - Path=/api/pets/**
-        - id: ms-coincidencias
-          uri: lb://MS-COINCIDENCIAS
-          predicates:
-            - Path=/api/coincidencias/**
-        - id: ms-comunidad
-          uri: lb://MS-COMUNIDAD
-          predicates:
-            - Path=/api/success-stories/**
+      mvc:
+        routes:
+          - id: ms-usuario
+            uri: lb://MS-USUARIO
+            predicates:
+              - Path=/api/usuarios/**, /api/auth/**
+          - id: ms-mascota
+            uri: lb://MS-MASCOTA
+            predicates:
+              - Path=/api/pets/**
+          - id: ms-coincidencias
+            uri: lb://MS-COINCIDENCIAS
+            predicates:
+              - Path=/api/coincidencias/**
+          - id: ms-comunidad
+            uri: lb://MS-COMUNIDAD
+            predicates:
+              - Path=/api/success-stories/**
 
 eureka:
   client:

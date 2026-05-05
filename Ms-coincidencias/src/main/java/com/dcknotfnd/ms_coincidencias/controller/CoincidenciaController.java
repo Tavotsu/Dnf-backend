@@ -28,8 +28,8 @@ public class CoincidenciaController {
     public List<MascotaDTO> buscarCoincidencias(@RequestParam String especie, @RequestParam String color) {
         List<MascotaDTO> todasLasMascotas = mascotaClient.obtenerTodasLasMascotas();
         return todasLasMascotas.stream()
-                .filter(m -> m.getEspecie().equalsIgnoreCase(especie) &&
-                        m.getColor().equalsIgnoreCase(color))
+                .filter(m -> m.getType().equalsIgnoreCase(especie) &&
+                        m.getBreed().equalsIgnoreCase(color))
                 .collect(Collectors.toList());
     }
 

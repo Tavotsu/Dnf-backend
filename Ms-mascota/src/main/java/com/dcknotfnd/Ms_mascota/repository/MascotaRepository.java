@@ -15,8 +15,8 @@ public interface MascotaRepository extends JpaRepository<Mascota, Long> {
     @Query("SELECT m FROM Mascota m WHERE " +
            "(:status IS NULL OR m.status = :status) AND " +
            "(:type IS NULL OR m.type = :type) AND " +
-           "(:query IS NULL OR LOWER(m.name) LIKE LOWER(CONCAT('%', :query, '%')))")
-    List<Mascota> buscarConFiltros(@Param("status") String status, 
-                                   @Param("type") String type, 
+           "LOWER(m.name) LIKE LOWER(CONCAT('%', COALESCE(:query, ''), '%'))")
+    List<Mascota> buscarConFiltros(@Param("status") String status,
+                                   @Param("type") String type,
                                    @Param("query") String query);
 }
