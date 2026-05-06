@@ -1,5 +1,6 @@
 package com.usuario.Ms_usuario.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -13,34 +14,39 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Cambiado de 'nombre' a 'name' para coincidir con el frontend
     @NotBlank(message = "El nombre es obligatorio y no puede estar vacío")
     @Column(nullable = false)
-    private String nombre;
+    private String name;
 
     @NotBlank(message = "El email es obligatorio")
     @Email(message = "Debe ingresar un formato de correo electrónico válido")
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotBlank(message = "La contraseña es obligatoria")
+    @JsonIgnore
     @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
     @Column(nullable = false)
     private String password;
 
-    @NotBlank(message = "Debe especificar un rol (ej: ciudadano, refugio)")
+    // ej: ciudadano, clinica, refugio , municipalidad
     @Column(nullable = false)
     private String rol;
 
-    // Constructor sin parámetros
+    // Añadido para coincidir con el frontend
+    @Column(nullable = true)
+    private String avatar;
+
     public Usuario() {
     }
 
-    // Constructor con parámetros
-    public Usuario(String nombre, String email, String password, String rol) {
-        this.nombre = nombre;
+    public Usuario(Long id, String name, String email, String password, String rol, String avatar) {
+        this.id = id;
+        this.name = name;
         this.email = email;
         this.password = password;
         this.rol = rol;
+        this.avatar = avatar;
     }
 
     // Getters y Setters
@@ -52,12 +58,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -82,5 +88,13 @@ public class Usuario {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

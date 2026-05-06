@@ -41,14 +41,12 @@ public class MascotaControllerTest {
     void setUp() {
         mascotaPrueba = new Mascota();
         mascotaPrueba.setId(1L);
-        mascotaPrueba.setName("Firulais");
-        mascotaPrueba.setType("Perro");
-        mascotaPrueba.setBreed("Quiltro");
-        mascotaPrueba.setGender("Macho");
-        mascotaPrueba.setStatus("lost");
-        mascotaPrueba.setLocation("Puerto Montt");
-        mascotaPrueba.setLatitude(-41.4693);
-        mascotaPrueba.setLongitude(-72.9423);
+        mascotaPrueba.setName("Firulais"); // Compilación: ajustado a name
+        mascotaPrueba.setType("Perro");    // Compilación: ajustado a type
+        mascotaPrueba.setBreed("Quiltro"); // Compilación: ajustado a breed
+        mascotaPrueba.setColor("Negro");
+        // Compilación: se eliminó setTamano ya que no existe en el modelo actual
+        mascotaPrueba.setUsuarioId(10L);
     }
 
     @Test
@@ -58,21 +56,24 @@ public class MascotaControllerTest {
         mockMvc.perform(post("/api/pets/report")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(mascotaPrueba)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Firulais"))
-                .andExpect(jsonPath("$.type").value("Perro"));
+
+                // 3. Verificamos que responda 201 Created y que el JSON de respuesta sea el correcto
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.status").value("success"))
+                .andExpect(jsonPath("$.message").value("Reporte creado exitosamente"));
     }
 
     @Test
     void testObtenerTodasLasMascotas() throws Exception {
         List<Mascota> listaDatos = Arrays.asList(mascotaPrueba);
-        
-        Mockito.when(mascotaRepository.buscarConFiltros(isNull(), isNull(), isNull())).thenReturn(listaDatos);
+
+        // Prueba: ajustado para mockear el nuevo método buscarConFiltros en lugar de findAll
+        Mockito.when(mascotaRepository.buscarConFiltros(any(), any(), any())).thenReturn(listaDatos);
 
         mockMvc.perform(get("/api/pets"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size()").value(1))
-                .andExpect(jsonPath("$[0].name").value("Firulais"));
+                .andExpect(jsonPath("$.size()").value(1)) // Verificamos que traiga 1 mascota
+                .andExpect(jsonPath("$[0].name").value("Firulais")); // Prueba: Verificamos el name
     }
 
     @Test

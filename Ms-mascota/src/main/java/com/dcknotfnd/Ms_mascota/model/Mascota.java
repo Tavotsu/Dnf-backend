@@ -3,6 +3,7 @@ package com.dcknotfnd.Ms_mascota.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "mascotas")
@@ -11,34 +12,47 @@ public class Mascota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @NotBlank(message = "El nombre no puede estar vacío")
+
+    @Column(nullable = false)
     private String name;
 
-    @NotBlank(message = "Debes especificar si es Perro, Gato, etc.")
-    private String type; 
+    @Column(nullable = false)
+    private String type; // ej: "dog", "cat", "bird", "other"
 
-    private String breed; 
-    private String gender; 
+    private String breed;
+    private String color;
+    private String gender; // ej: "Macho", "Hembra"
 
-    @NotBlank(message = "El estado (perdido/encontrado) es obligatorio")
-    private String status; 
+    @Column(nullable = false)
+    private String status; // "lost" o "found"
 
-    @NotBlank(message = "La ubicación es obligatoria")
-    private String location; 
-    
-    @NotNull(message = "La latitud es requerida para el mapa")
-    private Double latitude; 
-    
-    @NotNull(message = "La longitud es requerida para el mapa")
-    private Double longitude; 
+    private String location; // Nombre del lugar, ej: "Parque Central"
 
-    private String timeAgo;
-    
+    // Coordenadas separadas para facilitar búsquedas y el mapa
+    private Double latitude;
+    private Double longitude;
+
     @Column(length = 1000)
+    private String description;
+
     private String image;
 
-    public Mascota() {}
+    @Column(name = "created_at")
+    private LocalDateTime createdAt; // Para calcular el "timeAgo" en el frontend
+
+    @Column(name = "usuario_id", nullable = false)
+    private Long usuarioId;
+
+    // Ejecuta esto automáticamente justo antes de guardar en la base de datos
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public Mascota() {
+    }
+
+    // --- GETTERS Y SETTERS ---
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -51,6 +65,9 @@ public class Mascota {
 
     public String getBreed() { return breed; }
     public void setBreed(String breed) { this.breed = breed; }
+
+    public String getColor() { return color; }
+    public void setColor(String color) { this.color = color; }
 
     public String getGender() { return gender; }
     public void setGender(String gender) { this.gender = gender; }
@@ -67,9 +84,15 @@ public class Mascota {
     public Double getLongitude() { return longitude; }
     public void setLongitude(Double longitude) { this.longitude = longitude; }
 
-    public String getTimeAgo() { return timeAgo; }
-    public void setTimeAgo(String timeAgo) { this.timeAgo = timeAgo; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
     public String getImage() { return image; }
     public void setImage(String image) { this.image = image; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public Long getUsuarioId() { return usuarioId; }
+    public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
 }
