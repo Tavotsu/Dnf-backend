@@ -39,7 +39,7 @@ public class UsuarioControllerTest {
     void setUp() {
         usuarioPrueba = new Usuario();
         usuarioPrueba.setId(1L);
-        usuarioPrueba.setNombre("Juan Perez");
+        usuarioPrueba.setName("Juan Perez");
         usuarioPrueba.setEmail("juan@gmail.com");
         usuarioPrueba.setPassword("secreta123");
         usuarioPrueba.setRol("ciudadano");
