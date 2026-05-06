@@ -1,6 +1,7 @@
 package com.comunidad.Ms_comunidad.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "historias")
@@ -10,10 +11,15 @@ public class Historia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "La historia debe tener un título")
     private String title;
+
+    @NotBlank(message = "El nombre de la familia es obligatorio")
     private String family;
+
     private String location;
     
+    @NotBlank(message = "El contenido de la historia no puede estar vacío")
     @Column(columnDefinition = "TEXT")
     private String content;
     
@@ -24,7 +30,6 @@ public class Historia {
 
     public Historia() {
     }
-
     
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
