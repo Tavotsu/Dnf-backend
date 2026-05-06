@@ -23,6 +23,8 @@ El sistema está compuesto por los siguientes servicios, todos orquestados media
 | **Ms-Usuario** | `8082` | Microservicio para la gestión de usuarios. |
 | **Ms-Mascota** | `8081` | Microservicio para la gestión de mascotas. |
 | **Ms-Coincidencias** | `8083` | Microservicio para la lógica de coincidencias (matches). |
+| **Ms-Comunidad** | `8084` | Microservicio para la lógica de historias (matches). |
+| **Ms-Notificaciones** | `8085` | Microservicio para las notificaiones del usuario. |
 
 ## 🚀 Requisitos Previos
 

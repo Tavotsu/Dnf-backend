@@ -15,8 +15,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -38,7 +40,7 @@ public class MascotaControllerTest {
 
     @BeforeEach
     void setUp() {
-        // Configuramos los DATOS antes de cada test
+        // Configuramos los DATOS usando los nuevos atributos en inglés
         mascotaPrueba = new Mascota();
         mascotaPrueba.setId(1L);
         mascotaPrueba.setName("Firulais"); // Compilación: ajustado a name
@@ -51,13 +53,13 @@ public class MascotaControllerTest {
 
     @Test
     void testRegistrarMascota() throws Exception {
-        // 1. Preparamos el comportamiento: Cuando el repository guarde, devolverá nuestra mascotaPrueba
+        // 1. Preparamos el comportamiento
         Mockito.when(mascotaRepository.save(any(Mascota.class))).thenReturn(mascotaPrueba);
 
-        // 2. Hacemos el POST simulado (Prueba: ajustado a la nueva ruta /report)
-        mockMvc.perform(post("/api/mascotas/report")
+        // 2. Hacemos el POST simulado a la nueva ruta /api/pets/report
+        mockMvc.perform(post("/api/pets/report")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(mascotaPrueba))) // Enviamos los datos en JSON
+                        .content(objectMapper.writeValueAsString(mascotaPrueba)))
 
                 // 3. Verificamos que responda 201 Created y que el JSON de respuesta sea el correcto
                 .andExpect(status().isCreated())
@@ -73,23 +75,22 @@ public class MascotaControllerTest {
         // Prueba: ajustado para mockear el nuevo método buscarConFiltros en lugar de findAll
         Mockito.when(mascotaRepository.buscarConFiltros(any(), any(), any())).thenReturn(listaDatos);
 
-        // 2. Hacemos el GET simulado
-        mockMvc.perform(get("/api/mascotas"))
+        // 2. Hacemos el GET simulado a /api/pets
+        mockMvc.perform(get("/api/pets"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()").value(1)) // Verificamos que traiga 1 mascota
                 .andExpect(jsonPath("$[0].name").value("Firulais")); // Prueba: Verificamos el name
     }
 
     @Test
-    void testObtenerMascotasPorUsuario() throws Exception {
+    void testObtenerMascotaPorId() throws Exception {
         // 1. Preparamos los datos
-        List<Mascota> listaDatos = Arrays.asList(mascotaPrueba);
-        Mockito.when(mascotaRepository.findByUsuarioId(10L)).thenReturn(listaDatos);
+        Mockito.when(mascotaRepository.findById(1L)).thenReturn(Optional.of(mascotaPrueba));
 
-        // 2. Hacemos el GET simulado pasando el ID del usuario en la URL
-        mockMvc.perform(get("/api/mascotas/usuario/10"))
+        // 2. Hacemos el GET simulado al endpoint específico de ID
+        mockMvc.perform(get("/api/pets/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size()").value(1))
-                .andExpect(jsonPath("$[0].usuarioId").value(10));
+                .andExpect(jsonPath("$.name").value("Firulais"))
+                .andExpect(jsonPath("$.status").value("lost"));
     }
 }

@@ -9,6 +9,6 @@ import java.util.List;
 // Quitamos la 'url' estática, Eureka se encargará de buscar 'ms-mascota'
 @FeignClient(name = "ms-mascota")
 public interface MascotaClient {
-    @GetMapping("/api/mascotas")
+    @GetMapping("/api/pets")
     List<MascotaDTO> obtenerTodasLasMascotas();
 }

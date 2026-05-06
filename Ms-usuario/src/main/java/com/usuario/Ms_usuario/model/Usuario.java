@@ -2,6 +2,9 @@ package com.usuario.Ms_usuario.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "usuarios")
@@ -12,13 +15,17 @@ public class Usuario {
     private Long id;
 
     // Cambiado de 'nombre' a 'name' para coincidir con el frontend
+    @NotBlank(message = "El nombre es obligatorio y no puede estar vacío")
     @Column(nullable = false)
     private String name;
 
+    @NotBlank(message = "El email es obligatorio")
+    @Email(message = "Debe ingresar un formato de correo electrónico válido")
     @Column(nullable = false, unique = true)
     private String email;
 
     @JsonIgnore
+    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
     @Column(nullable = false)
     private String password;
 
@@ -42,8 +49,7 @@ public class Usuario {
         this.avatar = avatar;
     }
 
-    // --- Getters y Setters ---
-
+    // Getters y Setters
     public Long getId() {
         return id;
     }

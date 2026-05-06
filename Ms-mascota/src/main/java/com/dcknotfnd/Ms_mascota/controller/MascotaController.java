@@ -2,9 +2,6 @@ package com.dcknotfnd.Ms_mascota.controller;
 
 import com.dcknotfnd.Ms_mascota.model.Mascota;
 import com.dcknotfnd.Ms_mascota.repository.MascotaRepository;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -68,4 +65,13 @@ public class MascotaController {
     public ResponseEntity<List<Mascota>> obtenerPorUsuario(@PathVariable Long usuarioId) {
         return ResponseEntity.ok(mascotaRepository.findByUsuarioId(usuarioId));
     }
+    
+    // Endpoint 3: Obtener mascota por ID (Opcional pero muy útil para el frontend)
+    @GetMapping("/{id}")
+    public ResponseEntity<Mascota> obtenerMascotaPorId(@PathVariable Long id) {
+        return mascotaRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }

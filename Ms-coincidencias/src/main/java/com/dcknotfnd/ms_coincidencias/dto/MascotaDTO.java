@@ -5,10 +5,14 @@ import lombok.Data;
 @Data
 public class MascotaDTO {
     private Long id;
-    private String nombre;
-    private String especie;
-    private String raza;
-    private String color;
-    private String tamano;
-    private String fotoUrl;
+    private String name;
+    private String type;
+    private String breed;
+    private String gender;
+    private String status;
+    private String location;
+    private Double latitude;
+    private Double longitude;
+    private String timeAgo;
+    private String image;
 }
