@@ -41,11 +41,11 @@ public class MascotaControllerTest {
         // Configuramos los DATOS antes de cada test
         mascotaPrueba = new Mascota();
         mascotaPrueba.setId(1L);
-        mascotaPrueba.setNombre("Firulais");
-        mascotaPrueba.setEspecie("Perro");
-        mascotaPrueba.setRaza("Quiltro");
+        mascotaPrueba.setName("Firulais"); // Compilación: ajustado a name
+        mascotaPrueba.setType("Perro");    // Compilación: ajustado a type
+        mascotaPrueba.setBreed("Quiltro"); // Compilación: ajustado a breed
         mascotaPrueba.setColor("Negro");
-        mascotaPrueba.setTamano("Mediano");
+        // Compilación: se eliminó setTamano ya que no existe en el modelo actual
         mascotaPrueba.setUsuarioId(10L);
     }
 
@@ -54,28 +54,30 @@ public class MascotaControllerTest {
         // 1. Preparamos el comportamiento: Cuando el repository guarde, devolverá nuestra mascotaPrueba
         Mockito.when(mascotaRepository.save(any(Mascota.class))).thenReturn(mascotaPrueba);
 
-        // 2. Hacemos el POST simulado
-        mockMvc.perform(post("/api/mascotas")
+        // 2. Hacemos el POST simulado (Prueba: ajustado a la nueva ruta /report)
+        mockMvc.perform(post("/api/mascotas/report")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(mascotaPrueba))) // Enviamos los datos en JSON
 
-                // 3. Verificamos que responda 200 OK y que los datos sean correctos
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nombre").value("Firulais"))
-                .andExpect(jsonPath("$.especie").value("Perro"));
+                // 3. Verificamos que responda 201 Created y que el JSON de respuesta sea el correcto
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.status").value("success"))
+                .andExpect(jsonPath("$.message").value("Reporte creado exitosamente"));
     }
 
     @Test
     void testObtenerTodasLasMascotas() throws Exception {
         // 1. Preparamos una lista de datos
         List<Mascota> listaDatos = Arrays.asList(mascotaPrueba);
-        Mockito.when(mascotaRepository.findAll()).thenReturn(listaDatos);
+
+        // Prueba: ajustado para mockear el nuevo método buscarConFiltros en lugar de findAll
+        Mockito.when(mascotaRepository.buscarConFiltros(any(), any(), any())).thenReturn(listaDatos);
 
         // 2. Hacemos el GET simulado
         mockMvc.perform(get("/api/mascotas"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()").value(1)) // Verificamos que traiga 1 mascota
-                .andExpect(jsonPath("$[0].nombre").value("Firulais")); // Verificamos el nombre
+                .andExpect(jsonPath("$[0].name").value("Firulais")); // Prueba: Verificamos el name
     }
 
     @Test

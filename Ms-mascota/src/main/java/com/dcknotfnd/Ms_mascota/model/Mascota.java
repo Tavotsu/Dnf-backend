@@ -1,6 +1,7 @@
 package com.dcknotfnd.Ms_mascota.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "mascotas")
@@ -11,110 +12,85 @@ public class Mascota {
     private Long id;
 
     @Column(nullable = false)
-    private String nombre;
+    private String name;
 
     @Column(nullable = false)
-    private String especie;
+    private String type; // ej: "dog", "cat", "bird", "other"
 
-    private String raza;
+    private String breed;
     private String color;
-    private String tamano;
+    private String gender; // ej: "Macho", "Hembra"
 
-    @Column(length = 500)
-    private String caracteristicasFisicas;
+    @Column(nullable = false)
+    private String status; // "lost" o "found"
 
-    private String fotoUrl;
+    private String location; // Nombre del lugar, ej: "Parque Central"
+
+    // Coordenadas separadas para facilitar búsquedas y el mapa
+    private Double latitude;
+    private Double longitude;
+
+    @Column(length = 1000)
+    private String description;
+
+    private String image;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt; // Para calcular el "timeAgo" en el frontend
 
     @Column(name = "usuario_id", nullable = false)
     private Long usuarioId;
 
+    // Ejecuta esto automáticamente justo antes de guardar en la base de datos
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
 
     public Mascota() {
     }
 
+    // --- GETTERS Y SETTERS ---
 
-    public Mascota(Long id, String nombre, String especie, String raza, String color, String tamano, String caracteristicasFisicas, String fotoUrl, Long usuarioId) {
-        this.id = id;
-        this.nombre = nombre;
-        this.especie = especie;
-        this.raza = raza;
-        this.color = color;
-        this.tamano = tamano;
-        this.caracteristicasFisicas = caracteristicasFisicas;
-        this.fotoUrl = fotoUrl;
-        this.usuarioId = usuarioId;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getBreed() { return breed; }
+    public void setBreed(String breed) { this.breed = breed; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getColor() { return color; }
+    public void setColor(String color) { this.color = color; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getGender() { return gender; }
+    public void setGender(String gender) { this.gender = gender; }
 
-    public String getEspecie() {
-        return especie;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
 
-    public String getRaza() {
-        return raza;
-    }
+    public Double getLatitude() { return latitude; }
+    public void setLatitude(Double latitude) { this.latitude = latitude; }
 
-    public void setRaza(String raza) {
-        this.raza = raza;
-    }
+    public Double getLongitude() { return longitude; }
+    public void setLongitude(Double longitude) { this.longitude = longitude; }
 
-    public String getColor() {
-        return color;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
+    public String getImage() { return image; }
+    public void setImage(String image) { this.image = image; }
 
-    public String getTamano() {
-        return tamano;
-    }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
-    public void setTamano(String tamano) {
-        this.tamano = tamano;
-    }
-
-    public String getCaracteristicasFisicas() {
-        return caracteristicasFisicas;
-    }
-
-    public void setCaracteristicasFisicas(String caracteristicasFisicas) {
-        this.caracteristicasFisicas = caracteristicasFisicas;
-    }
-
-    public String getFotoUrl() {
-        return fotoUrl;
-    }
-
-    public void setFotoUrl(String fotoUrl) {
-        this.fotoUrl = fotoUrl;
-    }
-
-    public Long getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
-    }
+    public Long getUsuarioId() { return usuarioId; }
+    public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
 }
