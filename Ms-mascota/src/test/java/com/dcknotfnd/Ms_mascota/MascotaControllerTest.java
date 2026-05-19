@@ -49,6 +49,7 @@ public class MascotaControllerTest {
         mascotaPrueba.setColor("Negro");
         // Compilación: se eliminó setTamano ya que no existe en el modelo actual
         mascotaPrueba.setUsuarioId(10L);
+        mascotaPrueba.setStatus("lost");
     }
 
     @Test
@@ -92,5 +93,43 @@ public class MascotaControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Firulais"))
                 .andExpect(jsonPath("$.status").value("lost"));
+    }
+
+    @Test
+    void testObtenerTodasLasMascotasConFiltros() throws Exception {
+        List<Mascota> listaDatos = Arrays.asList(mascotaPrueba);
+        Mockito.when(mascotaRepository.buscarConFiltros("lost", "Perro", "Firulais")).thenReturn(listaDatos);
+
+        mockMvc.perform(get("/api/pets?status=lost&type=Perro&query=Firulais"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.size()").value(1));
+    }
+
+    @Test
+    void testObtenerSugerencias() throws Exception {
+        List<Mascota> listaDatos = Arrays.asList(mascotaPrueba);
+        Mockito.when(mascotaRepository.findByNameContainingIgnoreCase("Firu")).thenReturn(listaDatos);
+
+        mockMvc.perform(get("/api/pets/suggestions?q=Firu"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.size()").value(1));
+    }
+
+    @Test
+    void testObtenerPorUsuario() throws Exception {
+        List<Mascota> listaDatos = Arrays.asList(mascotaPrueba);
+        Mockito.when(mascotaRepository.findByUsuarioId(10L)).thenReturn(listaDatos);
+
+        mockMvc.perform(get("/api/pets/usuario/10"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.size()").value(1));
+    }
+
+    @Test
+    void testObtenerMascotaPorId_NotFound() throws Exception {
+        Mockito.when(mascotaRepository.findById(99L)).thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/api/pets/99"))
+                .andExpect(status().isNotFound());
     }
 }
