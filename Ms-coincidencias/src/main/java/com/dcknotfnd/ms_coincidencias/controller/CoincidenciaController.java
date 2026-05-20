@@ -51,7 +51,7 @@ public class CoincidenciaController {
         return coincidenciaRepository.findById(id).map(coincidencia -> {
             coincidencia.setEstado(coincidenciaActualizada.getEstado());
             return coincidenciaRepository.save(coincidencia);
-        }).orElseThrow(() -> new RuntimeException("Coincidencia no encontrada"));
+        }).orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.NOT_FOUND, "Coincidencia no encontrada"));
     }
 
     @DeleteMapping("/{id}")
