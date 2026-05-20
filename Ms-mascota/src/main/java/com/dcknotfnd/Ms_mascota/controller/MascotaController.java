@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/mascotas")
+@RequestMapping("/api/pets")
 @Tag(name = "API de Mascotas", description = "Controlador para gestionar reportes y búsquedas de mascotas")
 public class MascotaController {
 
