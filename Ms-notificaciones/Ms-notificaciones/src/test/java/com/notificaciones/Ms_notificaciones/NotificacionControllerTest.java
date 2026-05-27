@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 
+// Al ser un test unitario puro con Mockito, no necesitamos @WebMvcTest ni excluir la seguridad.
 public class NotificacionControllerTest {
 
     @Mock
@@ -38,7 +39,7 @@ public class NotificacionControllerTest {
         Mockito.doNothing().when(emailService).enviarCorreo(anyString(), anyString(), anyString());
 
         ResponseEntity<String> response = notificacionController.enviarNotificacion(alerta);
-        
+
         assertEquals(200, response.getStatusCode().value());
         assertEquals("Notificación enviada con éxito.", response.getBody());
     }
@@ -48,7 +49,7 @@ public class NotificacionControllerTest {
         Mockito.doThrow(new RuntimeException("Simulated error")).when(emailService).enviarCorreo(anyString(), anyString(), anyString());
 
         ResponseEntity<String> response = notificacionController.enviarNotificacion(alerta);
-        
+
         assertEquals(500, response.getStatusCode().value());
         assertEquals("Error al enviar el correo: Simulated error", response.getBody());
     }
