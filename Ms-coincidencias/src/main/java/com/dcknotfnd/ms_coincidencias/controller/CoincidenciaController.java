@@ -18,6 +18,13 @@ import java.util.stream.Collectors;
 @Tag(name = "API Coincidencias", description = "Gestión de coincidencias de mascotas")
 public class CoincidenciaController {
 
+
+    /*
+    CoincidenciaController Cumple la funcion de registrar una busqueda,
+    listar las busquedas, actualizar el estado de una busqueda y eliminar una busqueda. 
+
+    */
+
     @Autowired
     private MascotaClient mascotaClient;
 
@@ -32,6 +39,16 @@ public class CoincidenciaController {
                         m.getBreed().equalsIgnoreCase(color))
                 .collect(Collectors.toList());
     }
+     /*
+    Aqui se hace la busqueda de mascota base las especificaciones que se le den
+    como color, raza, especie, etc.
+
+    @param especie: Especie de la mascota a buscar (perro, gato, etc.)
+    @param color: Color de la mascota 
+    @return: Lista de mascotas que coinciden con los criterios de búsqueda
+    
+    */
+    
 
     @Operation(summary = "Crear nueva coincidencia", description = "Registra una búsqueda en estado PENDIENTE.")
     @PostMapping
@@ -39,12 +56,21 @@ public class CoincidenciaController {
         coincidencia.setEstado("PENDIENTE");
         return coincidenciaRepository.save(coincidencia);
     }
+    /*
+    aqui se crea una coincidencia, o regitra el estado de la busqueda
+    @param coincidencia: Objeto que contiene la información de la búsqueda a registrar
+    @return: La coincidencia registrada con su estado inicial (PENDIENTE)
+    */
 
     @Operation(summary = "Listar coincidencias", description = "Muestra todas las coincidencias registradas.")
     @GetMapping
     public List<Coincidencia> listarCoincidencias() {
         return coincidenciaRepository.findAll();
     }
+    /*
+    Aqui se listan las coincidencias Registradas en la base de datos
+    @return: Lista de todas las coincidencias registradas
+    */
 
     @PutMapping("/{id}")
     public Coincidencia actualizarCoincidencia(@PathVariable Long id, @Valid @RequestBody Coincidencia coincidenciaActualizada) {
@@ -53,9 +79,14 @@ public class CoincidenciaController {
             return coincidenciaRepository.save(coincidencia);
         }).orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.NOT_FOUND, "Coincidencia no encontrada"));
     }
+   
 
     @DeleteMapping("/{id}")
     public void eliminarCoincidencia(@PathVariable Long id) {
         coincidenciaRepository.deleteById(id);
     }
 }
+/*
+Aqui se busca la coincidencia base al id de la coincidencia
+@param id: Identificador de la coincidencia a actualizar
+*/
