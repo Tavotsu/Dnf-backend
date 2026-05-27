@@ -21,3 +21,12 @@ public class EmailService {
         mailSender.send(message);
     }
 }
+/*
+aqui se define el cuerpo del correo, el destinatario, el asunto y el remitente del correo, 
+para luego enviar el correo al usuario
+
+@param destinatario: Dirección de correo electrónico del destinatario
+@param asunto: Asunto del correo
+@param cuerpo: Cuerpo del correo
+
+*/
