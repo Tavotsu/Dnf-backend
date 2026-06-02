@@ -1,54 +1,123 @@
-# DNF Backend - Arquitectura de Microservicios
+# Proyecto Sanos y Salvos (DNF-Backend)
 
-Este proyecto es el backend de la aplicación DNF, construido con **Java 21** y **Spring Boot**. Utiliza una arquitectura de microservicios escalable, gestionada a través de contenedores Docker, e incluye descubrimiento de servicios y un API Gateway para centralizar las peticiones.
+Este proyecto es una arquitectura de microservicios desarrollada con **Java Spring Boot**, diseñada para gestionar el reporte y búsqueda de mascotas perdidas y encontradas.
 
-## 🛠️ Tecnologías Utilizadas
+## Arquitectura del Sistema
 
-* **Lenguaje:** Java 21
-* **Framework:** Spring Boot (3.2.3) y Spring Cloud (2023.0.1)
-* **Base de Datos:** PostgreSQL 15
-* **Contenedores:** Docker y Docker Compose
-* **Documentación de API:** Swagger / OpenAPI (Springdoc)
-* **Herramientas:** Maven, Lombok
+La solución utiliza una arquitectura distribuida orquestada con **Docker Compose**, que incluye servicios de descubrimiento, puerta de enlace y microservicios de negocio.
 
-## 🏗️ Arquitectura del Sistema
+### Diagrama de Arquitectura
 
-El sistema está compuesto por los siguientes servicios, todos orquestados mediante `docker-compose`:
+```mermaid
+graph TD
+    Client[Cliente / Frontend] -->|Peticiones HTTP| Gateway[API Gateway :8080]
+    
+    subgraph Ecosistema Spring Cloud
+        Gateway -.->|Descubrimiento| Eureka[Eureka Server :8761]
+        MsUsuario -.->|Registro| Eureka
+        MsMascota -.->|Registro| Eureka
+        MsCoincidencias -.->|Registro| Eureka
+        MsComunidad -.->|Registro| Eureka
+        MsNotificaciones -.->|Registro| Eureka
+    end
 
-| Servicio | Puerto Local | Descripción |
-| :--- | :--- | :--- |
-| **PostgreSQL DB** | `5432` | Base de datos relacional compartida (`dnf_db`). |
-| **Eureka Server** | `8761` | Servidor de descubrimiento de servicios (Netflix Eureka). |
-| **API Gateway** | `8080` | Punto de entrada único que enruta las peticiones a los microservicios. |
-| **Ms-Usuario** | `8082` | Microservicio para la gestión de usuarios. |
-| **Ms-Mascota** | `8081` | Microservicio para la gestión de mascotas. |
-| **Ms-Coincidencias** | `8083` | Microservicio para la lógica de coincidencias (matches). |
-| **Ms-Comunidad** | `8084` | Microservicio para la lógica de historias (matches). |
-| **Ms-Notificaciones** | `8085` | Microservicio para las notificaiones del usuario. |
+    Gateway -->|/api/usuarios| MsUsuario[Ms-Usuario :8082]
+    Gateway -->|/api/mascotas| MsMascota[Ms-Mascota :8081]
+    Gateway -->|/api/coincidencias| MsCoincidencias[Ms-Coincidencias :8083]
+    Gateway -->|/api/success-stories| MsComunidad[Ms-Comunidad :8094]
+    Gateway -->|/api/notificaciones| MsNotificaciones[Ms-Notificaciones :8095]
 
-## 🚀 Requisitos Previos
+    MsCoincidencias -->|Llamadas internas OpenFeign| MsMascota
+    MsCoincidencias -->|Alertas| MsNotificaciones
 
-Para ejecutar este proyecto en tu entorno local, necesitas tener instalado:
-* [Docker](https://www.docker.com/) y [Docker Compose](https://docs.docker.com/compose/)
-* [Java 21 JDK](https://adoptium.net/) (Para compilar localmente)
+    subgraph Persistencia
+        DB[(Base de Datos PostgreSQL :5432)]
+    end
 
-## Proximas mejoras
-* Implementacion de @Valid
-* Implementacion de bloques de try catch optimizado con Exepcion handler
-* Implementacion de base de datos en la nube con variables de entorno 
-* Restructuracion y optimizacion de codigo 
-## ⚙️ Instalación y Despliegue
+    MsUsuario -->|Lectura / Escritura JPA| DB
+    MsMascota -->|Lectura / Escritura JPA| DB
+    MsCoincidencias -->|Lectura / Escritura JPA| DB
+    MsComunidad -->|Lectura / Escritura JPA| DB
 
-Sigue estos pasos para levantar toda la infraestructura:
-
-### 1. Clonar el repositorio
-```bash
-git clone https://github.com/Tavotsu/Dnf-backend.git
-cd dnf-backend
+    MsNotificaciones -->|SMTP| Email[Servidor de Correos]
 ```
-### 2. Desplegar el proyecto
 
+### Componentes de Infraestructura
+
+- **Eureka Server (`eurekaserver`):** Actúa como el Directorio de Servicios, permitiendo que los microservicios se registren y se localicen entre sí dinámicamente.
+- **API Gateway (`Api-Gateway`):** Punto de entrada único para el frontend. Utiliza `Spring Cloud Gateway MVC` para enrutar las peticiones a los servicios correspondientes mediante balanceo de carga (`lb://`).
+- **Base de Datos:** Instancia compartida de **PostgreSQL** para la persistencia de datos de todos los servicios de negocio.
+
+---
+
+## Detalle de Microservicios
+
+### 1. Ms-Usuario (Gestión de Usuarios y Seguridad)
+Responsable de la administración de usuarios y la seguridad perimetral de la aplicación.
+- **Funcionalidad:** Registro de usuarios, perfiles y autenticación.
+- **Extras:** 
+    - **JWT (JSON Web Token):** Implementa seguridad mediante tokens compactos y seguros.
+    - **Proceso JWT:** Al iniciar sesión, el servicio genera un token firmado con una clave secreta (HMAC-SHA). Este token debe ser enviado en el encabezado `Authorization: Bearer <token>` para acceder a recursos protegidos.
+    - **Filtros de Seguridad:** Utiliza `JwtFilter` para interceptar y validar la integridad y expiración de cada petición.
+
+### 2. Ms-Mascota (Gestión de Reportes)
+Corazón del sistema para el manejo de la información de los animales.
+- **Funcionalidad:** CRUD completo de mascotas reportadas como perdidas o encontradas, permitiendo subir detalles como especie, raza, ubicación y estado.
+- **Extras:** Integración fluida con JPA y PostgreSQL para búsquedas geográficas y por atributos.
+
+### 3. Ms-Coincidencias (Motor de Match)
+Servicio inteligente que busca conexiones entre reportes de mascotas perdidas y encontradas.
+- **Funcionalidad:** Analiza la base de datos para encontrar posibles matches.
+- **Extras:**
+    - **OpenFeign:** Se comunica de forma declarativa con `Ms-Mascota` para obtener datos de los reportes.
+    - **Resilience4j:** Implementa patrones de tolerancia a fallos (Circuit Breaker) para asegurar que el sistema sea resiliente si otros servicios fallan.
+    - **LoadBalancer:** Distribuye las peticiones entre múltiples instancias de servicios de forma automática.
+
+### 4. Ms-Comunidad (Historias de Éxito)
+Espacio dedicado a la interacción social y la publicación de reencuentros.
+- **Funcionalidad:** Gestión de "Historias de Éxito", donde los usuarios comparten sus experiencias positivas tras recuperar a sus mascotas.
+- **Extras:** Fomenta la participación comunitaria y valida el impacto del sistema.
+
+### 5. Ms-Notificaciones (Servicio de Alertas)
+Encargado de mantener informados a los usuarios en tiempo real.
+- **Funcionalidad:** Envío de correos electrónicos cuando se detecta una coincidencia o una actualización relevante.
+- **Extras:** 
+    - **JavaMailSender:** Integración con protocolos SMTP para el envío de notificaciones.
+    - **Emails Automáticos:** Se activa mediante llamadas internas de otros servicios para alertar a los dueños.
+
+---
+
+## Ejecución y Puertos
+
+El proyecto está configurado para correr completamente mediante contenedores.
+
+### Requisitos
+- Docker y Docker Compose
+- Java 21 (para desarrollo local)
+- Maven 3.9+
+
+### Pasos para iniciar
 ```bash
-docker compose build
-docker compose up
+docker compose up --build
 ```
+
+### Mapa de Puertos
+| Servicio | Puerto Local | Path Base API |
+|---|---|---|
+| `eurekaserver` | 8761 | / |
+| `Api-Gateway` | 8080 | / |
+| `Ms-mascota` | 8081 | `/api/mascotas` |
+| `Ms-usuario` | 8082 | `/api/usuarios` |
+| `Ms-coincidencias` | 8083 | `/api/coincidencias` |
+| `Ms-comunidad` | 8094 | `/api/success-stories` |
+| `Ms-notificaciones` | 8095 | `/api/notificaciones` |
+| `postgres-db` | 5433 | DB: `dnf_db` |
+
+---
+
+## Documentación de API
+Cada microservicio de negocio integra **Springdoc OpenAPI (Swagger)**. Puedes acceder a la documentación interactiva en:
+`http://localhost:<puerto-del-servicio>/swagger-ui.html`
+
+---
+*Desarrollado para la plataforma Sanos y Salvos.*
