@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: ms-comunidad
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
   datasource:
     url: jdbc:postgresql://localhost:5432/dnf_db
     username: admin

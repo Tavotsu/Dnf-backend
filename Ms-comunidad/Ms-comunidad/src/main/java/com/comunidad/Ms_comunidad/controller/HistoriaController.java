@@ -3,6 +3,8 @@ package com.comunidad.Ms_comunidad.controller;
 import com.comunidad.Ms_comunidad.model.Historia;
 import com.comunidad.Ms_comunidad.repository.HistoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +18,14 @@ public class HistoriaController {
     private HistoriaRepository historiaRepository;
 
     // Endpoint para que el Frontend liste las historias
+    @Cacheable("historias")
     @GetMapping
-    public ResponseEntity<List<Historia>> obtenerHistorias() {
-        return ResponseEntity.ok(historiaRepository.findAll());
+    public List<Historia> obtenerHistorias() {
+        return historiaRepository.findAll();
     }
 
     // Endpoint para guardar una nueva historia de éxito
+    @CacheEvict(value = "historias", allEntries = true)
     @PostMapping
     public ResponseEntity<Historia> crearHistoria(@RequestBody Historia historia) {
         Historia nuevaHistoria = historiaRepository.save(historia);
