@@ -2,6 +2,7 @@ package com.comunidad.Ms_comunidad.controller;
 
 import com.comunidad.Ms_comunidad.model.Historia;
 import com.comunidad.Ms_comunidad.repository.HistoriaRepository;
+import com.comunidad.Ms_comunidad.security.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,6 +36,9 @@ public class HistoriaControllerTest {
 
     @MockBean
     private HistoriaRepository historiaRepository;
+
+    @MockBean
+    private JwtUtil jwtUtil;
 
     @Autowired
     private ObjectMapper objectMapper;

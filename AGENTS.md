@@ -41,7 +41,7 @@
 | `Ms-mascota` | 8081 | 3.2.3 | 2023.0.1 | `/api/pets` | JPA + PostgreSQL |
 | `Ms-usuario` | 8082 | 3.2.3 | 2023.0.1 | `/api/usuarios` | JPA + PostgreSQL |
 | `Ms-coincidencias` | 8083 | 3.2.3 | 2023.0.1 | `/api/coincidencias` | JPA + PostgreSQL, OpenFeign, Resilience4j |
-| `Ms-comunidad` | 8094 | 4.0.5 | 2025.1.1 | `/api/success-stories` | JPA + PostgreSQL |
+| `Ms-comunidad` | 8094 | 3.2.3 | 2023.0.1 | `/api/success-stories` | JPA + PostgreSQL |
 | `Ms-notificaciones` | 8095 | 4.0.5 | 2025.1.1 | `/api/notificaciones` | Email service, no DB |
 | `postgres-db` | 5433 | — | — | — | `dnf_db`, user `admin` / `adminpassword` |
 
@@ -72,7 +72,7 @@
 
 - All DB-backed services share the same PostgreSQL instance (`dnf_db`).
 - `spring.jpa.hibernate.ddl-auto: update` is enabled everywhere. **There are no Flyway/Liquibase migrations.** Schema changes are applied automatically on startup.
-- If you add `@Valid` or custom validation, remember to include the `spring-boot-starter-validation` dependency (it is not present yet).
+- If you add `@Valid` or custom validation, remember that `spring-boot-starter-validation` is already present in several microservices (e.g. `Ms-usuario`, `Ms-coincidencias`). Ensure it is included in your `pom.xml` if needed in others.
 
 ## Service-to-service calls
 
