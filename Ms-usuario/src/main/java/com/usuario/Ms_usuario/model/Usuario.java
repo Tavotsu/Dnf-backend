@@ -6,6 +6,10 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+/**
+ * Entidad que representa un usuario en el sistema.
+ * Almacena información personal, autenticación y roles.
+ */
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -14,7 +18,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Cambiado de 'nombre' a 'name' para coincidir con el frontend
     @NotBlank(message = "El nombre es obligatorio y no puede estar vacío")
     @Column(nullable = false)
     private String name;
@@ -29,13 +32,30 @@ public class Usuario {
     @Column(nullable = false)
     private String password;
 
-    // ej: ciudadano, clinica, refugio , municipalidad
+    /**
+     * Rol del usuario en el sistema.
+     * Puede ser: USER, ADMIN, MODERATOR, etc.
+     */
     @Column(nullable = false)
     private String rol;
 
-    // Añadido para coincidir con el frontend
     @Column(nullable = true)
     private String avatar;
+
+    /**
+     * Indica si la cuenta está activa.
+     * false = cuenta desactivada/bloqueada
+     */
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private boolean activo = true;
+
+    /**
+     * Número de intentos fallidos de login.
+     * Se reinicia después de un login exitoso.
+     * Se usa para implementar bloqueo temporal.
+     */
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    private int intentosFallidos = 0;
 
     public Usuario() {
     }
@@ -47,6 +67,8 @@ public class Usuario {
         this.password = password;
         this.rol = rol;
         this.avatar = avatar;
+        this.activo = true;
+        this.intentosFallidos = 0;
     }
 
     // Getters y Setters
@@ -96,5 +118,35 @@ public class Usuario {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public int getIntentosFallidos() {
+        return intentosFallidos;
+    }
+
+    public void setIntentosFallidos(int intentosFallidos) {
+        this.intentosFallidos = intentosFallidos;
+    }
+
+    /**
+     * Incrementa el contador de intentos fallidos.
+     */
+    public void incrementarIntentosFallidos() {
+        this.intentosFallidos++;
+    }
+
+    /**
+     * Reinicia el contador de intentos fallidos.
+     */
+    public void reiniciarIntentosFallidos() {
+        this.intentosFallidos = 0;
     }
 }

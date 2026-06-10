@@ -5,9 +5,9 @@ spring:
   application:
     name: ms-mascota
   datasource:
-    url: jdbc:postgresql://postgres-db:5432/dnf_db
-    username: admin
-    password: adminpassword
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres-db:5432/dnf_db}
+    username: ${SPRING_DATASOURCE_USERNAME:admin}
+    password: ${SPRING_DATASOURCE_PASSWORD:adminpassword}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

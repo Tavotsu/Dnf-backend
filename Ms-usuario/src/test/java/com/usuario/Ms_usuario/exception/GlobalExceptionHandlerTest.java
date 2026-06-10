@@ -1,15 +1,18 @@
 package com.usuario.Ms_usuario.exception;
 
+import com.usuario.Ms_usuario.dto.ApiResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.MethodParameter;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -29,14 +32,16 @@ class GlobalExceptionHandlerTest {
         FieldError fieldError1 = new FieldError("usuario", "email", "El email es obligatorio");
         FieldError fieldError2 = new FieldError("usuario", "name", "El nombre no puede estar vacío");
 
-        when(bindingResult.getAllErrors()).thenReturn(List.of(fieldError1, fieldError2));
+        when(bindingResult.getFieldErrors()).thenReturn(List.of(fieldError1, fieldError2));
 
         // Act (Ejecución)
-        Map<String, String> errores = handler.handleValidationExceptions(exception);
+        ResponseEntity<ApiResponse<?>> response = handler.handleValidationException(exception);
 
         // Assert (Verificación)
-        assertEquals(2, errores.size());
-        assertEquals("El email es obligatorio", errores.get("email"));
-        assertEquals("El nombre no puede estar vacío", errores.get("name"));
+        assertEquals(400, response.getStatusCode().value());
+        ApiResponse<?> apiResponse = response.getBody();
+        assertNotNull(apiResponse);
+        assertTrue(apiResponse.getMessage().contains("El email es obligatorio"));
+        assertTrue(apiResponse.getMessage().contains("El nombre no puede estar vacío"));
     }
 }

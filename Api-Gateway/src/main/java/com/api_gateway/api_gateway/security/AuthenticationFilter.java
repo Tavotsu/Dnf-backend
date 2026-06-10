@@ -9,13 +9,31 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Filtro de autenticación del Gateway.
+ * Valida tokens JWT para todas las rutas excepto las rutas públicas.
+ */
 @Component
 public class AuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    // Lista de rutas públicas que no requieren autenticación
+    private static final List<String> PUBLIC_PATHS = Arrays.asList(
+        "/api/usuarios/login",
+        "/api/usuarios",
+        "/swagger-ui",
+        "/v3/api-docs",
+        "/actuator"
+    );
+
+    private static final List<String> PUBLIC_METHODS = Arrays.asList(
+        "GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"
+    );
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -24,7 +42,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         String path = request.getRequestURI();
         String method = request.getMethod();
 
-        // 1. Rutas públicas que no requieren token
+        // 1. Verificar si es una ruta pública
         if (isPublicRoute(path, method)) {
             filterChain.doFilter(request, response);
             return;
@@ -35,8 +53,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
         // 3. Validar si existe y tiene el formato correcto
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write("No autorizado: Token faltante o invalido");
+            sendUnauthorizedError(response, "Token faltante o inválido");
             return;
         }
 
@@ -44,8 +61,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         final String token = authHeader.substring(7);
 
         if (!jwtUtil.isTokenValid(token)) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write("No autorizado: Token expirado o invalido");
+            sendUnauthorizedError(response, "Token expirado o inválido");
             return;
         }
 
@@ -53,22 +69,30 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
+    /**
+     * Verifica si la ruta es pública.
+     * Una ruta es pública si coincide con las rutas permitidas.
+     * 
+     * @param path Ruta de la solicitud
+     * @param method Método HTTP
+     * @return true si la ruta es pública, false en caso contrario
+     */
     private boolean isPublicRoute(String path, String method) {
-        // Permitir POST /api/usuarios/login
-        if (path.equals("/api/usuarios/login") && method.equals("POST")) {
-            return true;
-        }
-        
-        // Permitir POST /api/usuarios (Registro)
-        if (path.equals("/api/usuarios") && method.equals("POST")) {
-            return true;
-        }
+        return PUBLIC_PATHS.stream()
+            .anyMatch(path::contains);
+    }
 
-        // Permitir acceso a Swagger UI en todos los microservicios
-        if (path.contains("/swagger-ui") || path.contains("/v3/api-docs")) {
-            return true;
-        }
-
-        return false;
+    /**
+     * Envía una respuesta de error no autorizado.
+     * 
+     * @param response HttpServletResponse
+     * @param message Mensaje de error
+     * @throws IOException Si ocurre un error de I/O
+     */
+    private void sendUnauthorizedError(HttpServletResponse response, String message) throws IOException {
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.setContentType("application/json");
+        response.getWriter().write("{\"error\": \"" + message + "\"}");
     }
 }
+

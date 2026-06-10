@@ -106,4 +106,4 @@ El proyecto se encuentra en evolución activa. Se tienen identificadas las sigui
 * Centralización y optimización del manejo de excepciones globales mediante clases anotadas con `@ControllerAdvice` y `@ExceptionHandler`, para estandarizar las respuestas de error HTTP.
 * Migración de configuraciones estáticas (como credenciales de DB y URLs de Eureka) hacia variables de entorno, preparando la aplicación para su despliegue en entornos Cloud.
 * Reestructuración de la base de código (refactorización) para homogeneizar las convenciones de nombrado de paquetes, que actualmente difieren entre microservicios.
-* Implementación de migraciones de base de datos versionadas utilizando herramientas como Flyway o Liquibase, reemplazando la propiedad actual `spring.jpa.hibernate.ddl-auto: update`.
+* Implementación de migraciones de base de datos versionadas utilizando herramientas como Flyway o Liquibase, reemplazando la propiedad actual `spring.jpa.hibernate.ddl-auto: update`. 
