@@ -1,6 +1,6 @@
-package com.usuario.Ms_usuario.exception;
+package com.notificaciones.Ms_notificaciones.exception;
 
-import com.usuario.Ms_usuario.dto.ApiResponse;
+import com.notificaciones.Ms_notificaciones.dto.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -78,22 +78,6 @@ public class GlobalExceptionHandler {
         logger.warn("Conflicto: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT)
             .body(ApiResponse.error(409, ex.getMessage()));
-    }
-
-    /**
-     * Maneja excepciones de cuenta bloqueada por intentos fallidos.
-     */
-    @ExceptionHandler(AccountLockedException.class)
-    @ResponseStatus(HttpStatus.LOCKED)
-    public ResponseEntity<ApiResponse<?>> handleAccountLockedException(AccountLockedException ex) {
-        logger.warn("Cuenta bloqueada: {}", ex.getMessage());
-        ApiResponse<?> response = ApiResponse.error(423, ex.getMessage());
-        // Incluir tiempo restante en la respuesta si está disponible
-        if (ex.getMinutosRestantes() > 0) {
-            response.setMessage(ex.getMessage() + " (Desbloqueo disponible en " + ex.getMinutosRestantes() + " minutos)");
-        }
-        return ResponseEntity.status(HttpStatus.LOCKED)
-            .body(response);
     }
 
     /**

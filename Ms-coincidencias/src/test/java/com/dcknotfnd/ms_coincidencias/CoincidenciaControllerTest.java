@@ -181,7 +181,7 @@ public class CoincidenciaControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(coincidenciaPrueba)))
                 .andExpect(status().isNotFound())
-                .andExpect(result -> assertTrue(result.getResolvedException() instanceof org.springframework.web.server.ResponseStatusException));
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof com.dcknotfnd.ms_coincidencias.exception.ResourceNotFoundException));
     }
 
     @Test

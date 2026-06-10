@@ -11,7 +11,7 @@ class JwtUtilTest {
 
     @BeforeEach
     void setUp() {
-        jwtUtil = new JwtUtil();
+        jwtUtil = new JwtUtil("EstaEsUnaClaveSecretaMuyLargaParaAsegurarElTokenDeSanosYSalvos2026");
     }
 
     @Test
