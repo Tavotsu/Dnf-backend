@@ -10,6 +10,17 @@ services:
       - "5433:5432"
     restart: always
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-dnf
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    restart: always
+
   eureka-server:
     build: ./eurekaserver
     ports:
@@ -28,9 +39,11 @@ services:
       - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME:-admin}
       - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD:-adminpassword}
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=${EUREKA_DEFAULT_ZONE:-http://eureka-server:8761/eureka/}
+      - RABBITMQ_HOST=rabbitmq
     depends_on:
       - eureka-server
       - postgres-db
+      - rabbitmq
     restart: always
 
   ms-usuario:
@@ -100,6 +113,8 @@ services:
       - MAIL_PORT=${MAIL_PORT:-587}
       - MAIL_USERNAME=${MAIL_USERNAME:-tu_usuario@gmail.com}
       - MAIL_PASSWORD=${MAIL_PASSWORD:-tu_app_password}
+      - RABBITMQ_HOST=rabbitmq
     depends_on:
       - eureka-server
+      - rabbitmq
     restart: always

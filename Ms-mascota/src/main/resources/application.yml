@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: ms-mascota
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: 5672
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASS:guest}
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres-db:5432/dnf_db}
     username: ${SPRING_DATASOURCE_USERNAME:admin}

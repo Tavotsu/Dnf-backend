@@ -2,6 +2,9 @@ package com.dcknotfnd.Ms_mascota.controller;
 
 import com.dcknotfnd.Ms_mascota.model.Mascota;
 import com.dcknotfnd.Ms_mascota.repository.MascotaRepository;
+import com.dcknotfnd.Ms_mascota.dto.MascotaPerdidaDTO;
+import com.dcknotfnd.Ms_mascota.config.RabbitConfig;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -23,6 +26,9 @@ public class MascotaController {
 
     @Autowired
     private MascotaRepository mascotaRepository;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @Operation(summary = "Listar Mascotas con Filtros", description = "Obtiene la lista de mascotas aplicando filtros opcionales del mapa.")
     @ApiResponse(responseCode = "200", description = "Lista obtenida correctamente")
@@ -56,6 +62,19 @@ public class MascotaController {
 
    
         Mascota nuevaMascota = mascotaRepository.save(mascota);
+
+        if ("perdida".equalsIgnoreCase(nuevaMascota.getStatus()) || "lost".equalsIgnoreCase(nuevaMascota.getStatus())) {
+            MascotaPerdidaDTO dto = new MascotaPerdidaDTO(
+                nuevaMascota.getName(),
+                nuevaMascota.getType(),
+                nuevaMascota.getDescription(),
+                nuevaMascota.getLocation(),
+                "Usuario " + nuevaMascota.getUsuarioId(),
+                "usuario" + nuevaMascota.getUsuarioId() + "@dnf.com",
+                "No disponible"
+            );
+            rabbitTemplate.convertAndSend(RabbitConfig.QUEUE_NAME, dto);
+        }
 
         
         Map<String, Object> response = new HashMap<>();
