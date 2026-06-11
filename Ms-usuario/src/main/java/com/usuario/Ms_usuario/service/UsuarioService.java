@@ -8,6 +8,7 @@ import com.usuario.Ms_usuario.model.Usuario;
 import com.usuario.Ms_usuario.repository.LoginAttemptRepository;
 import com.usuario.Ms_usuario.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,6 +43,7 @@ public class UsuarioService {
      * @return Usuario encontrado
      * @throws ResourceNotFoundException si no existe
      */
+    @Cacheable(value = "usuarios", key = "#email")
     public Usuario obtenerPorEmail(String email) {
         return usuarioRepository.findByEmail(email)
             .orElseThrow(() -> new ResourceNotFoundException("Usuario con email " + email + " no encontrado"));
@@ -80,6 +82,7 @@ public class UsuarioService {
      * @return Usuario encontrado
      * @throws ResourceNotFoundException si no existe
      */
+    @Cacheable(value = "usuarios", key = "#id")
     public Usuario obtenerPorId(Long id) {
         return usuarioRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Usuario con ID " + id + " no encontrado"));

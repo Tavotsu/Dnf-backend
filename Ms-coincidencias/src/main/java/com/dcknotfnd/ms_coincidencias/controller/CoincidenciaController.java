@@ -4,6 +4,7 @@ import com.dcknotfnd.ms_coincidencias.client.MascotaClient;
 import com.dcknotfnd.ms_coincidencias.dto.MascotaDTO;
 import com.dcknotfnd.ms_coincidencias.model.Coincidencia;
 import com.dcknotfnd.ms_coincidencias.repository.CoincidenciaRepository;
+import com.dcknotfnd.ms_coincidencias.service.CoincidenciaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/coincidencias")
@@ -19,25 +19,15 @@ import java.util.stream.Collectors;
 public class CoincidenciaController {
 
 
-    /*
-    CoincidenciaController Cumple la funcion de registrar una busqueda,
-    listar las busquedas, actualizar el estado de una busqueda y eliminar una busqueda. 
-
-    */
-
     @Autowired
-    private MascotaClient mascotaClient;
+    private CoincidenciaService coincidenciaService;
 
     @Autowired
     private CoincidenciaRepository coincidenciaRepository;
 
     @GetMapping("/buscar")
     public List<MascotaDTO> buscarCoincidencias(@RequestParam String especie, @RequestParam String color) {
-        List<MascotaDTO> todasLasMascotas = mascotaClient.obtenerTodasLasMascotas();
-        return todasLasMascotas.stream()
-                .filter(m -> m.getType().equalsIgnoreCase(especie) &&
-                        m.getBreed().equalsIgnoreCase(color))
-                .collect(Collectors.toList());
+        return coincidenciaService.buscarCoincidencias(especie, color);
     }
      /*
     Aqui se hace la busqueda de mascota base las especificaciones que se le den
