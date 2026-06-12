@@ -50,9 +50,11 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
         // 2. Extraer cabecera Authorization
         final String authHeader = request.getHeader("Authorization");
+        System.out.println("Gateway: AuthHeader: " + authHeader);
 
         // 3. Validar si existe y tiene el formato correcto
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            System.out.println("Gateway: Token missing or format invalid");
             sendUnauthorizedError(response, "Token faltante o inválido");
             return;
         }
@@ -60,8 +62,16 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         // 4. Extraer token y validarlo
         final String token = authHeader.substring(7);
 
-        if (!jwtUtil.isTokenValid(token)) {
-            sendUnauthorizedError(response, "Token expirado o inválido");
+        try {
+            if (!jwtUtil.isTokenValid(token)) {
+                System.out.println("Gateway: Token is invalid: " + token);
+                sendUnauthorizedError(response, "Token expirado o inválido");
+                return;
+            }
+        } catch (Exception e) {
+            System.out.println("Gateway: Exception validating JWT: " + e.getMessage());
+            e.printStackTrace();
+            sendUnauthorizedError(response, "Error validando token");
             return;
         }
 
@@ -79,7 +89,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
      */
     private boolean isPublicRoute(String path, String method) {
         return PUBLIC_PATHS.stream()
-            .anyMatch(path::contains);
+            .anyMatch(path::equals);
     }
 
     /**
