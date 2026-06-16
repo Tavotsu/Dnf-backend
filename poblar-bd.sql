@@ -7,11 +7,11 @@ RESTART IDENTITY CASCADE;
 --    Roles válidos según enum Rol: USER, ADMIN, MODERATOR
 -- =====================================================================
 INSERT INTO usuarios (name, email, password, rol, avatar, activo, intentos_fallidos) VALUES
-('Juan Pérez',   'juan.perez@example.com',   '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'USER',      'https://api.dicebear.com/7.x/avataaars/svg?seed=Juan',   TRUE, 0),
-('María López',  'maria.lopez@example.com',  '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'MODERATOR', 'https://api.dicebear.com/7.x/avataaars/svg?seed=Maria',  TRUE, 0),
-('Carlos Ruiz',  'carlos.ruiz@example.com',  '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'USER',      'https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos', TRUE, 0),
-('Ana Gómez',    'ana.gomez@example.com',    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'USER',      'https://api.dicebear.com/7.x/avataaars/svg?seed=Ana',    TRUE, 0),
-('Admin DNF',    'admin@dnf.cl',             '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'ADMIN',     'https://api.dicebear.com/7.x/avataaars/svg?seed=Admin',  TRUE, 0);
+('Juan Pérez',   'juan.perez@example.com',   '$2a$10$FIsgQkqGfYxDVypPdyjBrekRvRLfI8toXXQmCcJXdftSNDQW.0cDu', 'USER',      'https://api.dicebear.com/7.x/avataaars/svg?seed=Juan',   TRUE, 0),
+('María López',  'maria.lopez@example.com',  '$2a$10$FIsgQkqGfYxDVypPdyjBrekRvRLfI8toXXQmCcJXdftSNDQW.0cDu', 'MODERATOR', 'https://api.dicebear.com/7.x/avataaars/svg?seed=Maria',  TRUE, 0),
+('Carlos Ruiz',  'carlos.ruiz@example.com',  '$2a$10$FIsgQkqGfYxDVypPdyjBrekRvRLfI8toXXQmCcJXdftSNDQW.0cDu', 'USER',      'https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos', TRUE, 0),
+('Ana Gómez',    'ana.gomez@example.com',    '$2a$10$FIsgQkqGfYxDVypPdyjBrekRvRLfI8toXXQmCcJXdftSNDQW.0cDu', 'USER',      'https://api.dicebear.com/7.x/avataaars/svg?seed=Ana',    TRUE, 0),
+('Admin DNF',    'admin@dnf.cl',             '$2b$10$VHSKqLcBSglspNMbhnLlku.kCqJXCY.vxXU.gIsT/Lz.r7J.PaeQ2', 'ADMIN',     'https://api.dicebear.com/7.x/avataaars/svg?seed=Admin',  TRUE, 0);
 
 -- =====================================================================
 -- 2) MASCOTAS
@@ -23,7 +23,7 @@ INSERT INTO usuarios (name, email, password, rol, avatar, activo, intentos_falli
 -- =====================================================================
 INSERT INTO mascotas (name, type, breed, color, gender, status, location, latitude, longitude, description, image, created_at, usuario_id) VALUES
 ('Max',       'dog',  'Golden Retriever', 'Dorado',            'Macho',  'lost',  'Plaza de Armas, Puerto Montt',     -41.4693, -72.9424, 'Perro muy amigable, se perdió cerca de la plaza central. Lleva collar azul con placa.',     'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=400', NOW() - INTERVAL '2 days',  1),
-('Luna',      'cat',  'Siamés',           'Blanco y Marrón',  'Hembra', 'found', 'Angelmó, Puerto Montt',            -41.4833, -72.9497, 'Gatita asustada encontrada cerca del mercado de Angelmó. Es muy cariñosa.',                  'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=400', NOW() - INTERVAL '1 day',   2),
+('Luna',      'cat',  'Siamés',           'Blanco y Marrón',  'Hembra', 'lost', 'Plaza de Armas, Puerto Montt',            -41.4696, -72.9416, 'Gatita asustada encontrada cerca de la plaza. Es muy cariñosa.',                  'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=400', NOW() - INTERVAL '1 day',   2),
 ('Rocky',     'dog',  'Bulldog Francés',  'Marrón',           'Macho',  'lost',  'Costanera, Puerto Montt',          -41.4725, -72.9360, 'Llevaba un collar rojo. Visto por el paseo costero por última vez el sábado.',                'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=400', NOW() - INTERVAL '3 days',  3),
 ('Coco',      'bird', 'Loro Tricahue',    'Verde',            'Macho',  'lost',  'Mirador Tenglo, Puerto Montt',     -41.4900, -72.9550, 'Loro muy hablador, sabe decir "Hola Coco". Voló desde una ventana abierta.',                 'https://images.unsplash.com/photo-1552728089-57169ab00a09?auto=format&fit=crop&q=80&w=400', NOW() - INTERVAL '5 days',  4),
 ('Toby',      'dog',  'Mestizo',          'Negro con blanco', 'Macho',  'found', 'Parque Chinquihue, Puerto Montt',   -41.4750, -72.9280, 'Perrito encontrado en las cercanías del parque. Muy sociable y juicioso.',                  'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=400', NOW() - INTERVAL '12 hours', 2),

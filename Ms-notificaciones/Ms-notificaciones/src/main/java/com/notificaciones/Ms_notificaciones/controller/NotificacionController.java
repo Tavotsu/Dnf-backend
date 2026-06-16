@@ -5,6 +5,10 @@ import com.notificaciones.Ms_notificaciones.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/notificaciones")
@@ -32,5 +36,27 @@ public class NotificacionController {
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Error al enviar el correo: " + e.getMessage());
         }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Map<String, Object>>> obtenerNotificaciones() {
+        // Retornamos lista vacía o notificaciones estáticas por ahora
+        List<Map<String, Object>> notificaciones = new ArrayList<>();
+        Map<String, Object> notif = new HashMap<>();
+        notif.put("id", 1);
+        notif.put("title", "Posible coincidencia");
+        notif.put("message", "Alguien ha publicado un perro que se parece a Max.");
+        notif.put("date", "Hace 2 horas");
+        notif.put("read", false);
+        notif.put("type", "match");
+        notificaciones.add(notif);
+        return ResponseEntity.ok(notificaciones);
+    }
+
+    @PostMapping("/read-all")
+    public ResponseEntity<Map<String, String>> marcarTodasComoLeidas() {
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Notificaciones marcadas como leídas");
+        return ResponseEntity.ok(response);
     }
 }

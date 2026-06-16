@@ -3,6 +3,11 @@ package com.dcknotfnd.Ms_mascota.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 @Entity
 @Table(name = "mascotas")
 public class Mascota {
@@ -33,8 +38,11 @@ public class Mascota {
     @Column(length = 1000)
     private String description;
 
+    @Column(columnDefinition = "TEXT")
     private String image;
 
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @Column(name = "created_at")
     private LocalDateTime createdAt; // Para calcular el "timeAgo" en el frontend
 
