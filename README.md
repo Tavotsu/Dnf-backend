@@ -47,6 +47,7 @@ graph TD
 - **Eureka Server (`eurekaserver`):** Actúa como el Directorio de Servicios, permitiendo que los microservicios se registren y se localicen entre sí dinámicamente.
 - **API Gateway (`Api-Gateway`):** Punto de entrada único para el frontend. Utiliza `Spring Cloud Gateway MVC` para enrutar las peticiones a los servicios correspondientes mediante balanceo de carga (`lb://`).
 - **Base de Datos:** Instancia compartida de **PostgreSQL** para la persistencia de datos de todos los servicios de negocio.
+- **Servicio de Cache (Redis):** Utilizado por varios microservicios (`Ms-mascota`, `Ms-usuario`, `Ms-coincidencias`, `Ms-comunidad`) para mejorar el rendimiento mediante el almacenamiento en caché de datos frecuentemente accedidos. El servicio `dnf-redis` se orquesta vía `docker-compose.yml`.
 
 ---
 
@@ -64,6 +65,7 @@ Responsable de la administración de usuarios y la seguridad perimetral de la ap
 Corazón del sistema para el manejo de la información de los animales.
 - **Funcionalidad:** CRUD completo de mascotas reportadas como perdidas o encontradas, permitiendo subir detalles como especie, raza, ubicación y estado.
 - **Extras:** Integración fluida con JPA y PostgreSQL para búsquedas geográficas y por atributos.
+    - **RabbitMQ:** Publica eventos de mascotas (perdidas/encontradas) para comunicación asíncrona con otros servicios.
 
 ### 3. Ms-Coincidencias (Motor de Match)
 Servicio inteligente que busca conexiones entre reportes de mascotas perdidas y encontradas.
@@ -84,6 +86,7 @@ Encargado de mantener informados a los usuarios en tiempo real.
 - **Extras:** 
     - **JavaMailSender:** Integración con protocolos SMTP para el envío de notificaciones.
     - **Emails Automáticos:** Se activa mediante llamadas internas de otros servicios para alertar a los dueños.
+    - **RabbitMQ:** Consume eventos de mascotas para enviar notificaciones personalizadas.
 
 ---
 
@@ -118,6 +121,11 @@ docker compose exec -T postgres-db psql -U admin -d dnf_db < poblar-bd.sql
 | `postgres-db` | 5433 | DB: `dnf_db` |
 
 ---
+
+## Cobertura de Código (JaCoCo)
+
+- La mayoría de los microservicios (`Ms-notificaciones`, `Ms-mascota`, `Ms-coincidencias`, `Ms-usuario`, `Ms-comunidad`) incluyen el plugin JaCoCo Maven (`jacoco-maven-plugin`).
+- Esto permite la generación de informes de cobertura de código durante la fase de `package` de Maven, ayudando a asegurar la calidad del código.
 
 ## Documentación de API
 

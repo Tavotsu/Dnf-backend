@@ -72,12 +72,33 @@
 
 - All DB-backed services share the same PostgreSQL instance (`dnf_db`).
 - `spring.jpa.hibernate.ddl-auto: update` is enabled everywhere. **There are no Flyway/Liquibase migrations.** Schema changes are applied automatically on startup.
-- If you add `@Valid` or custom validation, remember that `spring-boot-starter-validation` is already present in several microservices (e.g. `Ms-usuario`, `Ms-coincidencias`). Ensure it is included in your `pom.xml` if needed in others.
+- If you add `@Valid` or custom validation, remember that `spring-boot-starter-validation` is already present in several microservices (e.g. `eurekaserver`, `Ms-mascota`, `Ms-usuario`, `Ms-coincidencias`). Ensure it is included in your `pom.xml` if needed in others.
 
 ## Service-to-service calls
 
 - `Ms-coincidencias` calls `ms-mascota` via **OpenFeign** (`@FeignClient(name = "ms-mascota")`) resolved through Eureka. Do not hardcode URLs.
 - `Ms-notificaciones` exposes `POST /api/notificaciones/enviar-alerta` for email notifications. It does not have a DB.
+
+## Message Broker (RabbitMQ)
+
+-   `Ms-mascota` y `Ms-notificaciones` utilizan RabbitMQ para la comunicación asíncrona.
+-   `Ms-mascota` envía eventos relacionados con mascotas (ej. mascotas perdidas/encontradas).
+-   `Ms-notificaciones` consume estos eventos para enviar notificaciones.
+-   La integración se realiza mediante `spring-boot-starter-amqp`.
+-   La configuración de RabbitMQ para `Ms-mascota` se encuentra en `src/main/resources/application.yml` (host, port, user, pass).
+
+## Caching (Redis)
+
+-   Varios microservicios (`Ms-mascota`, `Ms-usuario`, `Ms-coincidencias`, `Ms-comunidad`) implementan caching con Redis para mejorar el rendimiento.
+-   Utilizan las dependencias `spring-boot-starter-data-redis` y `spring-boot-starter-cache`.
+-   El servicio Redis se define en `docker-compose.yml` (`dnf-redis`).
+-   La configuración específica del cache se maneja en clases como `RedisConfig.java` en cada servicio.
+-   Se usan anotaciones como `@Cacheable` para cachear resultados de métodos y `@CacheEvict` para invalidar la caché.
+
+## Code Coverage (JaCoCo)
+
+-   La mayoría de los microservicios (`Ms-notificaciones`, `Ms-mascota`, `Ms-coincidencias`, `Ms-usuario`, `Ms-comunidad`) incluyen el plugin JaCoCo Maven (`jacoco-maven-plugin`).
+-   Esto permite la generación de informes de cobertura de código durante la fase de `package` de Maven, ayudando a asegurar la calidad del código.
 
 ## JPQL gotcha with null parameters
 
