@@ -98,7 +98,11 @@ El proyecto está configurado para correr completamente mediante contenedores.
 
 ### Pasos para iniciar
 ```bash
-docker compose up --build
+docker compose up -d --build
+```
+
+```bash
+docker compose exec -T postgres-db psql -U admin -d dnf_db < poblar-bd.sql
 ```
 
 ### Mapa de Puertos
