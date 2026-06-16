@@ -16,6 +16,15 @@ public class NotificacionController {
     @PostMapping("/enviar-alerta")
     public ResponseEntity<String> enviarNotificacion(@RequestBody AlertaMatchDTO alerta) {
         String asunto = "¡Buenas noticias! Posible coincidencia para " + alerta.getNombreMascota();
+
+        /*
+        aqui se envia una notificacion de al usuario, al momento de hacer una coincidencia
+        llega una alerta al usuario con el nombre de la mascota y el mensaje de alerta 
+
+        @param alerta: Objeto que contiene la información de la alerta a enviar (correo del dueño, nombre de la mascota, mensaje de alerta)
+        @param asunto: Asunto del correo a enviar, que incluye el nombre de la mascota para personalizar la notificación
+        @return: Respuesta indicando si la notificación se envió con éxito o si hubo
+        */
         
         try {
             emailService.enviarCorreo(alerta.getCorreoDueno(), asunto, alerta.getMensaje());

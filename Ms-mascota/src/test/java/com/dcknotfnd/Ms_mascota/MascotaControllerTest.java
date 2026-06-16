@@ -8,8 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import com.dcknotfnd.Ms_mascota.security.JwtUtil;
+import com.dcknotfnd.Ms_mascota.security.JwtFilter;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -24,6 +27,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(MascotaController.class)
+@AutoConfigureMockMvc(addFilters = false)
 public class MascotaControllerTest {
 
     @Autowired
@@ -31,6 +35,12 @@ public class MascotaControllerTest {
 
     @MockBean
     private MascotaRepository mascotaRepository; // Simula la base de datos
+
+    @MockBean
+    private JwtUtil jwtUtil;
+
+    @MockBean
+    private JwtFilter jwtFilter;
 
     @Autowired
     private ObjectMapper objectMapper; // Convierte objetos Java a JSON

@@ -116,7 +116,10 @@ docker compose up --build
 ---
 
 ## Documentación de API
-Cada microservicio de negocio integra **Springdoc OpenAPI (Swagger)**. Puedes acceder a la documentación interactiva en:
+
+Para consultar el detalle completo de las rutas HTTP, métodos y su descripción, puedes referirte al archivo [ENDPOINTS.md](./ENDPOINTS.md).
+
+Adicionalmente, cada microservicio de negocio integra **Springdoc OpenAPI (Swagger)**. Puedes acceder a la documentación interactiva en:
 `http://localhost:<puerto-del-servicio>/swagger-ui.html`
 
 ---

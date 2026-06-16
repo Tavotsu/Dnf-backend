@@ -10,8 +10,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import com.dcknotfnd.ms_coincidencias.security.JwtUtil;
+import com.dcknotfnd.ms_coincidencias.security.JwtFilter;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -26,6 +29,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(CoincidenciaController.class)
+@AutoConfigureMockMvc(addFilters = false)
 public class CoincidenciaControllerTest {
 
     @Autowired
@@ -36,6 +40,12 @@ public class CoincidenciaControllerTest {
 
     @MockBean
     private MascotaClient mascotaClient;
+
+    @MockBean
+    private JwtUtil jwtUtil;
+
+    @MockBean
+    private JwtFilter jwtFilter;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -171,7 +181,7 @@ public class CoincidenciaControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(coincidenciaPrueba)))
                 .andExpect(status().isNotFound())
-                .andExpect(result -> assertTrue(result.getResolvedException() instanceof org.springframework.web.server.ResponseStatusException));
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof com.dcknotfnd.ms_coincidencias.exception.ResourceNotFoundException));
     }
 
     @Test

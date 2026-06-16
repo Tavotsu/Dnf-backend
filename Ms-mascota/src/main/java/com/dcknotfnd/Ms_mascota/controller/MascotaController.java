@@ -2,6 +2,10 @@ package com.dcknotfnd.Ms_mascota.controller;
 
 import com.dcknotfnd.Ms_mascota.model.Mascota;
 import com.dcknotfnd.Ms_mascota.repository.MascotaRepository;
+import com.dcknotfnd.Ms_mascota.dto.MascotaPerdidaDTO;
+import com.dcknotfnd.Ms_mascota.config.RabbitConfig;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import com.dcknotfnd.Ms_mascota.service.MascotaService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -24,6 +28,12 @@ public class MascotaController {
     @Autowired
     private MascotaRepository mascotaRepository;
 
+    @Autowired
+    private MascotaService mascotaService;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
     @Operation(summary = "Listar Mascotas con Filtros", description = "Obtiene la lista de mascotas aplicando filtros opcionales del mapa.")
     @ApiResponse(responseCode = "200", description = "Lista obtenida correctamente")
     @GetMapping
@@ -32,29 +42,46 @@ public class MascotaController {
             @RequestParam(required = false) String type,
             @RequestParam(required = false) String query) {
 
-        // Convertimos los nulos a strings vacíos para que PostgreSQL no se queje
-        String safeStatus = (status != null) ? status : "";
-        String safeType = (type != null) ? type : "";
-        String safeQuery = (query != null) ? query : "";
-
-        List<Mascota> mascotas = mascotaRepository.buscarConFiltros(safeStatus, safeType, safeQuery);
+        List<Mascota> mascotas = mascotaService.obtenerMascotas(status, type, query);
         return ResponseEntity.ok(mascotas);
     }
+
+    /*
+    MascotaCOntroller se encarga de gestionar los reportes de mascotas,
+    aqui se pueden listar mascotas con filtros, reportar una mascota perdida o encontrada
+
+    @param status: Estado de la mascota (perdida, encontrada, etc.)
+    @param type: Tipo de mascota (perro, gato, etc.)
+    @return: Lista de mascotas que coinciden con los filtros aplicados
+     */
     @Operation(summary = "Reportar una mascota", description = "Crea un nuevo reporte (perdida o encontrada).")
     @ApiResponse(responseCode = "201", description = "Reporte creado exitosamente")
     @PostMapping("/report")
     public ResponseEntity<Map<String, Object>> reportarMascota(@RequestBody Mascota mascota) {
 
-        // Guardamos la mascota en la base de datos
+   
         Mascota nuevaMascota = mascotaRepository.save(mascota);
 
-        // Armamos el JSON de respuesta exacto que exige el frontend
+        if ("perdida".equalsIgnoreCase(nuevaMascota.getStatus()) || "lost".equalsIgnoreCase(nuevaMascota.getStatus())) {
+            MascotaPerdidaDTO dto = new MascotaPerdidaDTO(
+                nuevaMascota.getName(),
+                nuevaMascota.getType(),
+                nuevaMascota.getDescription(),
+                nuevaMascota.getLocation(),
+                "Usuario " + nuevaMascota.getUsuarioId(),
+                "usuario" + nuevaMascota.getUsuarioId() + "@dnf.com",
+                "No disponible"
+            );
+            rabbitTemplate.convertAndSend(RabbitConfig.QUEUE_NAME, dto);
+        }
+
+        
         Map<String, Object> response = new HashMap<>();
         response.put("id", nuevaMascota.getId());
         response.put("status", "success");
         response.put("message", "Reporte creado exitosamente");
 
-        // Retornamos 201 Created
+       
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -64,19 +91,28 @@ public class MascotaController {
         List<Mascota> sugerencias = mascotaRepository.findByNameContainingIgnoreCase(q);
         return ResponseEntity.ok(sugerencias);
     }
-
     @Operation(summary = "Obtener mascotas de un usuario", description = "Lista el historial de reportes de un usuario específico.")
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<List<Mascota>> obtenerPorUsuario(@PathVariable Long usuarioId) {
         return ResponseEntity.ok(mascotaRepository.findByUsuarioId(usuarioId));
     }
     
-    // Endpoint 3: Obtener mascota por ID (Opcional pero muy útil para el frontend)
+
     @GetMapping("/{id}")
     public ResponseEntity<Mascota> obtenerMascotaPorId(@PathVariable Long id) {
-        return mascotaRepository.findById(id)
+        return mascotaService.obtenerMascotaPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
+
 }
+/*
+aqui se define el controlador de mascotas, que se encarga de gestionar los reportes de mascotas, 
+como listar mascotas con filtros, reportar una mascota perdida o encontrada,
+ obtener sugerencias de búsqueda por nombre y obtener el historial de reportes de un usuario específico. 
+
+ @param status: Estado de la mascota (perdida, encontrada, etc.)
+ @param type: Tipo de mascota (perro, gato, etc.)
+@return entrega una lista de mascotas que coinciden con los filtros aplicados, o el historial de reportes de un usuario específico, o el detalle de una mascota por su id.
+*/

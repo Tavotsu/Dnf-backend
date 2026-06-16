@@ -1,6 +1,5 @@
 package com.usuario.Ms_usuario.dto;
 
-import com.usuario.Ms_usuario.model.Usuario;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,11 +15,10 @@ class DtoTest {
 
     @Test
     void testAuthResponse() {
-        Usuario usuario = new Usuario();
-        usuario.setName("Prueba");
+        UsuarioDTO usuario = new UsuarioDTO(1L, "Prueba", "test@test.com", "USER", null);
         AuthResponse res = new AuthResponse("token123", usuario);
 
         assertEquals("token123", res.token());
-        assertEquals("Prueba", res.user().getName());
+        assertEquals("Prueba", res.user().name());
     }
 }
