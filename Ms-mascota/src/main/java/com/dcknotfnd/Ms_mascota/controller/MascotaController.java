@@ -31,6 +31,9 @@ public class MascotaController {
     @Autowired
     private MascotaService mascotaService;
 
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
     @Operation(summary = "Listar Mascotas con Filtros", description = "Obtiene la lista de mascotas aplicando filtros opcionales del mapa.")
     @ApiResponse(responseCode = "200", description = "Lista obtenida correctamente")
     @GetMapping

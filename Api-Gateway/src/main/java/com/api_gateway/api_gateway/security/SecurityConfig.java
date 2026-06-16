@@ -26,6 +26,7 @@ public class SecurityConfig {
             .csrf().disable()
             .authorizeHttpRequests(authz -> authz
                 // Permitir rutas públicas
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/pets", "/api/pets/**", "/api/success-stories", "/api/success-stories/**").permitAll()
                 .requestMatchers("/api/usuarios/login").permitAll()
                 .requestMatchers("/api/usuarios").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()

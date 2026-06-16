@@ -26,6 +26,8 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     private static final List<String> PUBLIC_PATHS = Arrays.asList(
         "/api/usuarios/login",
         "/api/usuarios",
+        "/api/pets",
+        "/api/success-stories",
         "/swagger-ui",
         "/v3/api-docs",
         "/actuator"
@@ -89,7 +91,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
      */
     private boolean isPublicRoute(String path, String method) {
         return PUBLIC_PATHS.stream()
-            .anyMatch(path::equals);
+            .anyMatch(path::startsWith);
     }
 
     /**
