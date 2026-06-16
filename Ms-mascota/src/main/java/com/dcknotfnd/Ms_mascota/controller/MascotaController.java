@@ -5,6 +5,7 @@ import com.dcknotfnd.Ms_mascota.repository.MascotaRepository;
 import com.dcknotfnd.Ms_mascota.dto.MascotaPerdidaDTO;
 import com.dcknotfnd.Ms_mascota.config.RabbitConfig;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import com.dcknotfnd.Ms_mascota.service.MascotaService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -28,7 +29,7 @@ public class MascotaController {
     private MascotaRepository mascotaRepository;
 
     @Autowired
-    private RabbitTemplate rabbitTemplate;
+    private MascotaService mascotaService;
 
     @Operation(summary = "Listar Mascotas con Filtros", description = "Obtiene la lista de mascotas aplicando filtros opcionales del mapa.")
     @ApiResponse(responseCode = "200", description = "Lista obtenida correctamente")
@@ -38,12 +39,7 @@ public class MascotaController {
             @RequestParam(required = false) String type,
             @RequestParam(required = false) String query) {
 
-        
-        String safeStatus = (status != null) ? status : "";
-        String safeType = (type != null) ? type : "";
-        String safeQuery = (query != null) ? query : "";
-
-        List<Mascota> mascotas = mascotaRepository.buscarConFiltros(safeStatus, safeType, safeQuery);
+        List<Mascota> mascotas = mascotaService.obtenerMascotas(status, type, query);
         return ResponseEntity.ok(mascotas);
     }
 
@@ -101,10 +97,11 @@ public class MascotaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Mascota> obtenerMascotaPorId(@PathVariable Long id) {
-        return mascotaRepository.findById(id)
+        return mascotaService.obtenerMascotaPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
 
 }
 /*

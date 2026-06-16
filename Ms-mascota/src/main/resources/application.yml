@@ -14,6 +14,10 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME:admin}
     password: ${SPRING_DATASOURCE_PASSWORD:adminpassword}
     driver-class-name: org.postgresql.Driver
+  data:
+    redis:
+      host: redis
+      port: 6379
   jpa:
     hibernate:
       ddl-auto: update

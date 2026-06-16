@@ -1,4 +1,11 @@
 services:
+  redis:
+    image: redis:alpine
+    container_name: dnf-redis
+    ports:
+      - "6379:6379"
+    restart: always
+
   postgres-db:
     image: postgres:15
     container_name: postgres-dnf
@@ -40,6 +47,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD:-adminpassword}
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=${EUREKA_DEFAULT_ZONE:-http://eureka-server:8761/eureka/}
       - RABBITMQ_HOST=rabbitmq
+      - SPRING_REDIS_HOST=redis
     depends_on:
       - eureka-server
       - postgres-db
@@ -56,6 +64,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME:-admin}
       - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD:-adminpassword}
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=${EUREKA_DEFAULT_ZONE:-http://eureka-server:8761/eureka/}
+      - SPRING_REDIS_HOST=redis
     depends_on:
       - eureka-server
       - postgres-db
@@ -71,6 +80,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME:-admin}
       - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD:-adminpassword}
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=${EUREKA_DEFAULT_ZONE:-http://eureka-server:8761/eureka/}
+      - SPRING_REDIS_HOST=redis
     depends_on:
       - eureka-server
       - postgres-db
