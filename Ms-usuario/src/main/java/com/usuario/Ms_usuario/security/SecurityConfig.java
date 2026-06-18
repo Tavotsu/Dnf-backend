@@ -63,7 +63,17 @@ public class SecurityConfig {
         configuration.setAllowCredentials(true);
         configuration.setMaxAge(3600L);
 
+        CorsConfiguration swaggerConfig = new CorsConfiguration();
+        swaggerConfig.setAllowedOriginPatterns(Arrays.asList("*"));
+        swaggerConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+        swaggerConfig.setAllowedHeaders(Arrays.asList("*"));
+        swaggerConfig.setAllowCredentials(false);
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/v3/api-docs/**", swaggerConfig);
+        source.registerCorsConfiguration("/swagger-ui/**", swaggerConfig);
+        source.registerCorsConfiguration("/swagger-resources/**", swaggerConfig);
+        source.registerCorsConfiguration("/swagger-ui.html", swaggerConfig);
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
